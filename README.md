@@ -1,4 +1,4 @@
-# Flowsint
+# Hudhud
 
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](./LICENSE)
 [![Ethical Software](https://img.shields.io/badge/ethical-use-blue.svg)](./ETHICS.md)
@@ -40,7 +40,7 @@ Then go to [http://localhost:5173/register](http://localhost:5173/register) and 
 
 ## What is it?
 
-Flowsint is a graph-based investigation tool focused on reconnaissance and OSINT (Open Source Intelligence). It allows you to explore relationships between entities through a visual graph interface and automated enrichers.
+Hudhud is a graph-based investigation tool focused on reconnaissance and OSINT (Open Source Intelligence). It allows you to explore relationships between entities through a visual graph interface and automated enrichers.
 
 ### Available Enrichers
 
