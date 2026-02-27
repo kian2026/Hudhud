@@ -3,7 +3,7 @@
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](./LICENSE)
 [![Ethical Software](https://img.shields.io/badge/ethical-use-blue.svg)](./ETHICS.md)
 
-Flowsint is an open-source OSINT graph exploration tool designed for ethical investigation, transparency, and verification.
+Hudhud is an open-source OSINT graph exploration tool designed for ethical investigation, transparency, and verification.
 
 **Ethics:** Please read [ETHICS.md](./ETHICS.md) for responsible use guidelines.
 
