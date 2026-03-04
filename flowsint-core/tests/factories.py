@@ -5,8 +5,8 @@ from uuid import uuid4
 import factory
 from factory.alchemy import SQLAlchemyModelFactory
 
-from flowsint_core.core.enums import EventLevel
-from flowsint_core.core.models import (
+from hudhud_core.core.enums import EventLevel
+from hudhud_core.core.models import (
     Analysis,
     Chat,
     ChatMessage,
@@ -21,7 +21,7 @@ from flowsint_core.core.models import (
     Scan,
     Sketch,
 )
-from flowsint_core.core.types import Role
+from hudhud_core.core.types import Role
 
 
 class ProfileFactory(SQLAlchemyModelFactory):

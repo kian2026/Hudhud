@@ -16,7 +16,7 @@ COMPOSE_DEPLOY := docker compose -f docker-compose.deploy.yml
 	logs-dev logs-prod logs-deploy status \
 	regenerate-router
 
-ENV_DIRS := . flowsint-api flowsint-core flowsint-app
+ENV_DIRS := . hudhud-api hudhud-core hudhud-app
 
 check-env:
 	@echo "Checking .env files..."
@@ -132,43 +132,43 @@ migrate-prod:
 
 alembic-upgrade:
 	@echo "Running Alembic migrations (upgrade head)..."
-	cd $(PROJECT_ROOT)/flowsint-api && poetry run alembic upgrade head
+	cd $(PROJECT_ROOT)/hudhud-api && poetry run alembic upgrade head
 
 alembic-downgrade:
 	@echo "Rolling back last Alembic migration..."
-	cd $(PROJECT_ROOT)/flowsint-api && poetry run alembic downgrade -1
+	cd $(PROJECT_ROOT)/hudhud-api && poetry run alembic downgrade -1
 
 alembic-revision:
 	@if [ -z "$(m)" ]; then \
 		echo "Usage: make alembic-revision m=\"your migration message\""; exit 1; \
 	fi
 	@echo "Creating new Alembic migration: $(m)"
-	cd $(PROJECT_ROOT)/flowsint-api && poetry run alembic revision --autogenerate -m "$(m)"
+	cd $(PROJECT_ROOT)/hudhud-api && poetry run alembic revision --autogenerate -m "$(m)"
 
 api:
-	cd $(PROJECT_ROOT)/flowsint-api && \
+	cd $(PROJECT_ROOT)/hudhud-api && \
 	poetry run uvicorn app.main:app --host 0.0.0.0 --port 5001 --reload
 
 frontend:
-	cd $(PROJECT_ROOT)/flowsint-app && yarn dev
+	cd $(PROJECT_ROOT)/hudhud-app && yarn dev
 
 celery:
-	cd $(PROJECT_ROOT)/flowsint-api && \
-	poetry run celery -A flowsint_core.core.celery \
+	cd $(PROJECT_ROOT)/hudhud-api && \
+	poetry run celery -A hudhud_core.core.celery \
 	worker --loglevel=info --pool=threads --concurrency=10
 
 test:
-	cd flowsint-types && poetry run pytest
-	cd flowsint-core && poetry run pytest
-	cd flowsint-enrichers && poetry run pytest
+	cd hudhud-types && poetry run pytest
+	cd hudhud-core && poetry run pytest
+	cd hudhud-enrichers && poetry run pytest
 
 install:
 	poetry config virtualenvs.in-project true --local
 	$(MAKE) infra-dev
 	poetry install
-	cd flowsint-core && poetry install
-	cd flowsint-enrichers && poetry install
-	cd flowsint-api && poetry install && poetry run alembic upgrade head
+	cd hudhud-core && poetry install
+	cd hudhud-enrichers && poetry install
+	cd hudhud-api && poetry install && poetry run alembic upgrade head
 
 status:
 	@echo "=== DEV Containers ==="
@@ -189,17 +189,17 @@ clean:
 	-$(COMPOSE_DEV) down -v --rmi all --remove-orphans
 	-$(COMPOSE_PROD) down -v --rmi all --remove-orphans
 	-$(COMPOSE_DEPLOY) down -v --rmi all --remove-orphans
-	rm -rf flowsint-app/node_modules
-	rm -rf flowsint-core/.venv
-	rm -rf flowsint-enrichers/.venv
-	rm -rf flowsint-api/.venv
+	rm -rf hudhud-app/node_modules
+	rm -rf hudhud-core/.venv
+	rm -rf hudhud-enrichers/.venv
+	rm -rf hudhud-api/.venv
 
 regenerate-router:
-	@echo "Regenerating flowsint-app/src/routeTree.gen.ts"
-	cd $(PROJECT_ROOT)/flowsint-app && npx tsr generate
+	@echo "Regenerating hudhud-app/src/routeTree.gen.ts"
+	cd $(PROJECT_ROOT)/hudhud-app && npx tsr generate
 
 help:
-	@echo "Flowsint Makefile"
+	@echo "Hudhud Makefile"
 	@echo ""
 	@echo "Development:"
 	@echo "  make dev          - Start DEV environment (local build, hot-reload)"

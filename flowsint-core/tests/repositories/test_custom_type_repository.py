@@ -1,6 +1,6 @@
 """Tests for CustomTypeRepository."""
 from tests.factories import CustomTypeFactory, ProfileFactory
-from flowsint_core.core.repositories import CustomTypeRepository
+from hudhud_core.core.repositories import CustomTypeRepository
 
 
 class TestCustomTypeRepository:

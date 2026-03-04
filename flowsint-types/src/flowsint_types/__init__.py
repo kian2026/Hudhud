@@ -1,5 +1,5 @@
 """
-Flowsint Types - Pydantic models for flowsint
+Hudhud Types - Pydantic models for hudhud
 """
 
 # Import registry first to ensure it's ready for auto-registration
@@ -25,7 +25,7 @@ from .document import Document
 from .domain import Domain
 from .email import Email
 from .file import File
-from .flowsint_base import FlowsintType
+from .hudhud_base import HudhudType
 from .gravatar import Gravatar
 from .individual import Individual
 from .ip import Ip
@@ -36,7 +36,7 @@ from .organization import Organization
 from .phone import Phone
 from .phrase import Phrase
 from .port import Port
-from .registry import TYPE_REGISTRY, flowsint_type, get_type, load_all_types
+from .registry import TYPE_REGISTRY, hudhud_type, get_type, load_all_types
 from .reputation_score import ReputationScore
 from .risk_profile import RiskProfile
 from .script import Script
@@ -53,7 +53,7 @@ from .whois import Whois
 load_all_types()
 
 __version__ = "0.1.0"
-__author__ = "dextmorgn <contact@flowsint.io>"
+__author__ = "dextmorgn <contact@hudhud.io>"
 
 __all__ = [
     "Location",
@@ -102,9 +102,9 @@ __all__ = [
     "deserialize_pydantic_from_transport",
     # New type registry
     "TYPE_REGISTRY",
-    "flowsint_type",
+    "hudhud_type",
     "get_type",
-    "FlowsintType",
+    "HudhudType",
 ]
 
 

@@ -1,14 +1,14 @@
 import requests
 from typing import List, Dict, Union, Set
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_enrichers.registry import flowsint_enricher
-from flowsint_types.organization import Organization
-from flowsint_types.individual import Individual
-from flowsint_core.core.logger import Logger
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_enrichers.registry import hudhud_enricher
+from hudhud_types.organization import Organization
+from hudhud_types.individual import Individual
+from hudhud_core.core.logger import Logger
 from tools.organizations.sirene import SireneTool
 
 
-@flowsint_enricher
+@hudhud_enricher
 class IndividualToOrgEnricher(Enricher):
     """[SIRENE] Find organization from a person with data from SIRENE (France only)."""
 
@@ -86,7 +86,7 @@ class IndividualToOrgEnricher(Enricher):
             # Create Location for siege_geo_adresse if coordinates exist
             siege_geo_adresse = None
             if siege.get("latitude") and siege.get("longitude"):
-                from flowsint_types.address import Location
+                from hudhud_types.address import Location
 
                 siege_geo_adresse = Location(
                     address=siege.get("adresse", ""),

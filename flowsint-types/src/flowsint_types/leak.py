@@ -1,12 +1,12 @@
 from typing import List, Dict, Optional, Self
 from pydantic import Field, model_validator
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Leak(FlowsintType):
+@hudhud_type
+class Leak(HudhudType):
     """Represents a data leak or breach with associated data."""
 
     name: str = Field(

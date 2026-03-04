@@ -2,9 +2,9 @@ from fastapi import Depends, HTTPException, status, Request
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from sqlalchemy.orm import Session
-from flowsint_core.core.auth import ALGORITHM
-from flowsint_core.core.postgre_db import get_db
-from flowsint_core.core.models import Profile
+from hudhud_core.core.auth import ALGORITHM
+from hudhud_core.core.postgre_db import get_db
+from hudhud_core.core.models import Profile
 from typing import Optional
 
 import os

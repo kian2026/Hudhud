@@ -1,12 +1,12 @@
 from pydantic import Field, model_validator
 from typing import Optional, List, Self
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class SSLCertificate(FlowsintType):
+@hudhud_type
+class SSLCertificate(HudhudType):
     """Represents an SSL/TLS certificate with validation and security details."""
 
     subject: str = Field(

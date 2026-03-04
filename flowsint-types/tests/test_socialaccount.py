@@ -1,4 +1,4 @@
-from flowsint_types import SocialAccount, Username
+from hudhud_types import SocialAccount, Username
 
 
 def test_social_account_from_type():

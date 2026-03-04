@@ -7,13 +7,13 @@ into Neo4j-compatible primitive types, following the Single Responsibility Princ
 
 from typing import Any, Callable, Dict, List, Optional, Type
 
-from flowsint_types import FlowsintType
+from hudhud_types import HudhudType
 from pydantic import BaseModel
 
-# Callable that resolves a type name to a FlowsintType subclass (or None).
-TypeResolver = Callable[[str], Optional[Type[FlowsintType]]]
+# Callable that resolves a type name to a HudhudType subclass (or None).
+TypeResolver = Callable[[str], Optional[Type[HudhudType]]]
 
-from flowsint_core.utils import flatten, unflatten
+from hudhud_core.utils import flatten, unflatten
 
 from .types import GraphEdge, GraphNode, NodeMetadata
 
@@ -56,13 +56,13 @@ class GraphSerializer:
         return flatten(dict, remove_empty=False)
 
     @staticmethod
-    def parse_flowsint_type(
+    def parse_hudhud_type(
         entity: Dict,
         nodeType: str,
         type_resolver: Optional[TypeResolver] = None,
-    ) -> FlowsintType:
+    ) -> HudhudType:
         if not type_resolver:
-            from flowsint_core.core.services.type_registry_service import local_type_resolver
+            from hudhud_core.core.services.type_registry_service import local_type_resolver
             type_resolver = local_type_resolver
         DetectedType = type_resolver(nodeType)
         if not DetectedType:
@@ -71,7 +71,7 @@ class GraphSerializer:
         return DetectedType(**properties)
 
     @staticmethod
-    def graph_node_to_flowsint_type(node: GraphNode) -> FlowsintType:
+    def graph_node_to_hudhud_type(node: GraphNode) -> HudhudType:
         return node.nodeProperties
 
     @staticmethod
@@ -82,7 +82,7 @@ class GraphSerializer:
         """Convert a flattened Neo4j node record to a GraphNode instance.
 
         Unflattens the data, parses the nodeProperties into the appropriate
-        FlowsintType subclass, and constructs a complete GraphNode.
+        HudhudType subclass, and constructs a complete GraphNode.
         """
         data = node_dict.get("data")
         node_id = str(node_dict.get("id"))
@@ -101,7 +101,7 @@ class GraphSerializer:
             "nodeLabel", None
         )  # remove nodeLabel from original pydantic
 
-        entity = GraphSerializer.parse_flowsint_type(
+        entity = GraphSerializer.parse_hudhud_type(
             node_properties, node_type, type_resolver=type_resolver
         )
         return GraphNode(
@@ -121,7 +121,7 @@ class GraphSerializer:
         )
 
     @staticmethod
-    def flowsint_type_to_neo4j_dict(entity: FlowsintType) -> Dict[str, Any]:
+    def hudhud_type_to_neo4j_dict(entity: HudhudType) -> Dict[str, Any]:
         node_type = entity.__class__.__name__.lower()
         node_label = entity.nodeLabel
         node_shape = (
@@ -176,12 +176,12 @@ class GraphSerializer:
         """
         from_type = (
             from_obj.__class__.__name__.lower()
-            if isinstance(from_obj, FlowsintType)
+            if isinstance(from_obj, HudhudType)
             else from_obj.nodeType
         )
         to_type = (
             to_obj.__class__.__name__.lower()
-            if isinstance(to_obj, FlowsintType)
+            if isinstance(to_obj, HudhudType)
             else to_obj.nodeType
         )
         return {
@@ -211,9 +211,9 @@ class GraphSerializer:
         return [GraphSerializer.graph_node_to_neo4j_dict(node) for node in nodes]
 
     @staticmethod
-    def serialize_flowsint_types(nodes: List[FlowsintType]) -> List[Dict[str, Any]]:
+    def serialize_hudhud_types(nodes: List[HudhudType]) -> List[Dict[str, Any]]:
         """Convert a list of Neo4j node records to GraphNode instances."""
-        return [GraphSerializer.flowsint_type_to_neo4j_dict(node) for node in nodes]
+        return [GraphSerializer.hudhud_type_to_neo4j_dict(node) for node in nodes]
 
     @staticmethod
     def deserialize_edges(edge_dicts: List[Dict[str, Any]]) -> List[GraphEdge]:

@@ -4,18 +4,18 @@ from typing import List
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
-from flowsint_core.core.models import Profile
-from flowsint_core.core.postgre_db import get_db
-from flowsint_core.core.services import (
+from hudhud_core.core.models import Profile
+from hudhud_core.core.postgre_db import get_db
+from hudhud_core.core.services import (
     ConflictError,
     NotFoundError,
     ValidationError,
     create_enricher_template_service,
     create_template_generator_service,
 )
-from flowsint_core.core.template_enricher import TemplateEnricher
-from flowsint_core.core.vault import Vault
-from flowsint_core.templates.types import Template
+from hudhud_core.core.template_enricher import TemplateEnricher
+from hudhud_core.core.vault import Vault
+from hudhud_core.templates.types import Template
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_user

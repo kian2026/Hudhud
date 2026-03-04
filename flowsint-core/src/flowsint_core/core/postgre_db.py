@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Remplace avec ton URL de BDD
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://localhost:5432/flowsint")
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://localhost:5432/hudhud")
 
 engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

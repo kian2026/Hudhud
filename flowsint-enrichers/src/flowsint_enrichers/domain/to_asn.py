@@ -2,16 +2,16 @@ import json
 import os
 import socket
 from typing import Any, Dict, List, Optional, Union
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_enrichers.registry import flowsint_enricher
-from flowsint_types.domain import Domain
-from flowsint_types.asn import ASN
-from flowsint_core.utils import is_valid_domain
-from flowsint_core.core.logger import Logger
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_enrichers.registry import hudhud_enricher
+from hudhud_types.domain import Domain
+from hudhud_types.asn import ASN
+from hudhud_core.utils import is_valid_domain
+from hudhud_core.core.logger import Logger
 from tools.network.asnmap import AsnmapTool
 
 
-@flowsint_enricher
+@hudhud_enricher
 class DomainToAsnEnricher(Enricher):
     """[ASNMAP] Takes a domain and returns its corresponding ASN."""
 

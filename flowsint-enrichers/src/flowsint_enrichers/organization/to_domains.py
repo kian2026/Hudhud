@@ -1,22 +1,22 @@
 import os
 import re
 from typing import Any, List, Dict, Set, Optional
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_enrichers.registry import flowsint_enricher
-from flowsint_types import Email, Phone
-from flowsint_types.domain import Domain
-from flowsint_types.organization import Organization
-from flowsint_types.individual import Individual
-from flowsint_types.address import Location
-from flowsint_core.core.logger import Logger
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_enrichers.registry import hudhud_enricher
+from hudhud_types import Email, Phone
+from hudhud_types.domain import Domain
+from hudhud_types.organization import Organization
+from hudhud_types.individual import Individual
+from hudhud_types.address import Location
+from hudhud_core.core.logger import Logger
 from tools.network.whoxy import WhoxyTool
-from flowsint_core.utils import is_valid_domain, is_root_domain
+from hudhud_core.utils import is_valid_domain, is_root_domain
 from dotenv import load_dotenv
 
 load_dotenv()
 
 
-@flowsint_enricher
+@hudhud_enricher
 class OrgToDomainsEnricher(Enricher):
     """[WHOXY] Takes an organization and returns the domains it registered."""
 

@@ -1,13 +1,13 @@
 import socket
 from typing import List
-from flowsint_core.core.logger import Logger
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_enrichers.registry import flowsint_enricher
-from flowsint_types.domain import Domain
-from flowsint_types.ip import Ip
+from hudhud_core.core.logger import Logger
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_enrichers.registry import hudhud_enricher
+from hudhud_types.domain import Domain
+from hudhud_types.ip import Ip
 
 
-@flowsint_enricher
+@hudhud_enricher
 class ResolveEnricher(Enricher):
     """Resolve domain names to IP addresses."""
 

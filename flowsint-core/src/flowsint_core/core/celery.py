@@ -2,13 +2,13 @@ from celery import Celery
 from .config import settings
 
 celery = Celery(
-    "flowsint",
+    "hudhud",
     broker=settings.CELERY_BROKER_URL,
     backend=settings.CELERY_RESULT_BACKEND,
     include=[
-        "flowsint_core.tasks.event",
-        "flowsint_core.tasks.enricher",
-        "flowsint_core.tasks.flow",
+        "hudhud_core.tasks.event",
+        "hudhud_core.tasks.enricher",
+        "hudhud_core.tasks.flow",
     ],
 )
 

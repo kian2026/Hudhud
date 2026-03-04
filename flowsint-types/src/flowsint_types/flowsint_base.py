@@ -3,18 +3,18 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 
-class FlowsintType(BaseModel):
-    """Base class for all Flowsint entity types with nodeLabel support.
+class HudhudType(BaseModel):
+    """Base class for all Hudhud entity types with nodeLabel support.
     nodeLabel is optional but computed at definition time.
 
-    All classes that inherit from FlowsintType must be decorated with @flowsint_type
+    All classes that inherit from HudhudType must be decorated with @hudhud_type
     to be registered in the global TYPE_REGISTRY and accessed by their class name.
 
     Usage:
-        from flowsint_types.registry import flowsint_type
+        from hudhud_types.registry import hudhud_type
 
-        @flowsint_type
-        class Domain(FlowsintType):
+        @hudhud_type
+        class Domain(HudhudType):
             domain: str
     """
 

@@ -31,10 +31,10 @@ htmlcov/
 .hypothesis/
 .ruff_cache/
 
-flowsint-app/node_modules/
-flowsint-app/dist/
-flowsint-app/.vite/
-flowsint-app/coverage/
+hudhud-app/node_modules/
+hudhud-app/dist/
+hudhud-app/.vite/
+hudhud-app/coverage/
 
 .env
 .env.*

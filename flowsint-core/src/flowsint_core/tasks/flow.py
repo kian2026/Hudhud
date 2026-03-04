@@ -4,7 +4,7 @@ from typing import List, Optional
 from celery import states
 from sqlalchemy.orm import Session
 
-from flowsint_core.utils import to_json_serializable
+from hudhud_core.utils import to_json_serializable
 
 from ..core.celery import celery
 from ..core.enums import EventLevel

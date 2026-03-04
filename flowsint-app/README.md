@@ -1,6 +1,6 @@
-# flowsint-app
+# hudhud-app
 
-The folder for the flowsint client, a web application built with Vite and React. The main libraries used are:
+The folder for the hudhud client, a web application built with Vite and React. The main libraries used are:
 
 - TanstackQuery
 - TanstackRouter

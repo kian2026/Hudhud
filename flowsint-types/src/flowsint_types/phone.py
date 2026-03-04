@@ -2,13 +2,13 @@ from pydantic import Field, field_validator, model_validator
 from typing import Optional, Any, Self
 import phonenumbers
 from phonenumbers import NumberParseException
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 import ipaddress
 
 
-@flowsint_type
-class Phone(FlowsintType):
+@hudhud_type
+class Phone(HudhudType):
     """Represents a phone number with country and carrier information."""
 
     number: str = Field(..., description="Phone number", title="Phone Number", json_schema_extra={"primary": True})

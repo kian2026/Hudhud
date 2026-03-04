@@ -1,6 +1,6 @@
-# flowsint-types
+# hudhud-types
 
-The types used in the flowsint enrichers and core for flowsint.
+The types used in the hudhud enrichers and core for hudhud.
 
 ## Testing
 

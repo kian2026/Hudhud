@@ -1,10 +1,10 @@
 """
 This module provides an automatic type registration system using decorators.
-All FlowsintType subclasses can be decorated with @flowsint_type to automatically
+All HudhudType subclasses can be decorated with @hudhud_type to automatically
 register themselves in the global TYPE_REGISTRY.
 
 Auto-discovery is performed by calling load_all_types() which imports all modules
-in the flowsint_types package, triggering the @flowsint_type decorators.
+in the hudhud_types package, triggering the @hudhud_type decorators.
 """
 
 import importlib
@@ -12,14 +12,14 @@ import pkgutil
 import sys
 from typing import Dict, Optional, Type, TypeVar
 
-from .flowsint_base import FlowsintType
+from .hudhud_base import HudhudType
 
-T = TypeVar("T", bound=FlowsintType)
+T = TypeVar("T", bound=HudhudType)
 
 
 class TypeRegistry:
     """
-    Global registry for Flowsint types.
+    Global registry for Hudhud types.
 
     Stores mappings:
     - Class name (e.g., "Domain") -> Class
@@ -27,8 +27,8 @@ class TypeRegistry:
     """
 
     def __init__(self):
-        self._types: Dict[str, Type[FlowsintType]] = {}
-        self._lowercase_types: Dict[str, Type[FlowsintType]] = {}
+        self._types: Dict[str, Type[HudhudType]] = {}
+        self._lowercase_types: Dict[str, Type[HudhudType]] = {}
 
     def register(self, cls: Type[T]) -> Type[T]:
         """
@@ -51,7 +51,7 @@ class TypeRegistry:
 
         return cls
 
-    def get(self, type_name: str) -> Optional[Type[FlowsintType]]:
+    def get(self, type_name: str) -> Optional[Type[HudhudType]]:
         """
         Get a type by its name (case-sensitive).
 
@@ -63,7 +63,7 @@ class TypeRegistry:
         """
         return self._types.get(type_name)
 
-    def get_lowercase(self, type_name: str) -> Optional[Type[FlowsintType]]:
+    def get_lowercase(self, type_name: str) -> Optional[Type[HudhudType]]:
         """
         Get a type by its lowercase name (for Neo4j compatibility).
 
@@ -75,7 +75,7 @@ class TypeRegistry:
         """
         return self._lowercase_types.get(type_name.lower())
 
-    def all_types(self) -> Dict[str, Type[FlowsintType]]:
+    def all_types(self) -> Dict[str, Type[HudhudType]]:
         """
         Get all registered types.
 
@@ -84,7 +84,7 @@ class TypeRegistry:
         """
         return self._types.copy()
 
-    def all_types_lowercase(self) -> Dict[str, Type[FlowsintType]]:
+    def all_types_lowercase(self) -> Dict[str, Type[HudhudType]]:
         """
         Get all registered types with lowercase keys.
 
@@ -103,13 +103,13 @@ class TypeRegistry:
 TYPE_REGISTRY = TypeRegistry()
 
 
-def flowsint_type(cls: Type[T]) -> Type[T]:
+def hudhud_type(cls: Type[T]) -> Type[T]:
     """
-    Decorator to automatically register a FlowsintType subclass.
+    Decorator to automatically register a HudhudType subclass.
 
     Usage:
-        @flowsint_type
-        class Domain(FlowsintType):
+        @hudhud_type
+        class Domain(HudhudType):
             domain: str
             ...
 
@@ -128,7 +128,7 @@ def flowsint_type(cls: Type[T]) -> Type[T]:
 
 def get_type(
     type_name: str, case_sensitive: bool = False
-) -> Optional[Type[FlowsintType]]:
+) -> Optional[Type[HudhudType]]:
     """
     Convenience function to get a type from the global registry.
 
@@ -151,10 +151,10 @@ _types_loaded = False
 
 def load_all_types() -> None:
     """
-    Automatically discover and import all type modules in the flowsint_types package.
+    Automatically discover and import all type modules in the hudhud_types package.
 
     This function uses importlib to dynamically import all Python modules in the
-    flowsint_types package, which triggers the @flowsint_type decorators and
+    hudhud_types package, which triggers the @hudhud_type decorators and
     registers all types in TYPE_REGISTRY.
 
     Features:
@@ -171,10 +171,10 @@ def load_all_types() -> None:
     if _types_loaded:
         return
 
-    # Get the flowsint_types package
-    import flowsint_types
+    # Get the hudhud_types package
+    import hudhud_types
 
-    package = flowsint_types
+    package = hudhud_types
     package_path = package.__path__
     package_name = package.__name__
 
@@ -190,7 +190,7 @@ def load_all_types() -> None:
         if modname in sys.modules:
             continue
 
-        # Import the module to trigger @flowsint_type decorators
+        # Import the module to trigger @hudhud_type decorators
         try:
             importlib.import_module(modname)
         except Exception as e:

@@ -10,7 +10,7 @@ load_dotenv()
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
-from flowsint_core.core.models import *  # noqa
+from hudhud_core.core.models import *  # noqa
 
 config = context.config
 if config.config_file_name is not None:

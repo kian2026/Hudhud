@@ -3,7 +3,7 @@
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](./LICENSE)
 [![Ethical Software](https://img.shields.io/badge/ethical-use-blue.svg)](./ETHICS.md)
 
-Flowsint is an open-source OSINT graph exploration tool designed for ethical investigation, transparency, and verification.
+Hudhud is an open-source OSINT graph exploration tool designed for ethical investigation, transparency, and verification.
 
 **Ethics:** Please read [ETHICS.md](./ETHICS.md) for responsible use guidelines.
 
@@ -13,7 +13,7 @@ Flowsint is an open-source OSINT graph exploration tool designed for ethical inv
 
 ## Contributing
 
-Flowsint is still in early development and definetly needs the help of the community! Feel free to raise issues, propose features, etc.
+Hudhud is still in early development and definetly needs the help of the community! Feel free to raise issues, propose features, etc.
 
 ## Get started
 
@@ -27,8 +27,8 @@ Don't want to read ? Got it. Here's your install instructions:
 #### 2. Run install command
 
 ```bash
-git clone https://github.com/reconurge/flowsint.git
-cd flowsint
+git clone https://github.com/reconurge/hudhud.git
+cd hudhud
 make prod
 ```
 
@@ -104,24 +104,24 @@ The project is organized into autonomous modules:
 
 ### Core modules
 
-- **flowsint-core**: Core utilities, orchestrator, vault, celery tasks, and base classes
-- **flowsint-types**: Pydantic models and type definitions
-- **flowsint-enrichers**: Enricher modules, scanning logic, and tools
-- **flowsint-api**: FastAPI server, API routes, and schemas only
-- **flowsint-app**: Frontend application
+- **hudhud-core**: Core utilities, orchestrator, vault, celery tasks, and base classes
+- **hudhud-types**: Pydantic models and type definitions
+- **hudhud-enrichers**: Enricher modules, scanning logic, and tools
+- **hudhud-api**: FastAPI server, API routes, and schemas only
+- **hudhud-app**: Frontend application
 
 ### Module dependencies
 
 ```
-flowsint-app (frontend)
+hudhud-app (frontend)
     ↓
-flowsint-api (API server)
+hudhud-api (API server)
     ↓
-flowsint-core (orchestrator, tasks, vault)
+hudhud-core (orchestrator, tasks, vault)
     ↓
-flowsint-enrichers (enrichers & tools)
+hudhud-enrichers (enrichers & tools)
     ↓
-flowsint-types (types)
+hudhud-types (types)
 ```
 
 ## Development setup
@@ -144,7 +144,7 @@ The app is accessible at [http://localhost:5173](http://localhost:5173).
 
 ## Module details
 
-### flowsint-core
+### hudhud-core
 
 Core utilities and base classes used by all other modules:
 
@@ -155,7 +155,7 @@ Core utilities and base classes used by all other modules:
 - Base classes for enrichers and tools
 - Utility functions
 
-### flowsint-types
+### hudhud-types
 
 Pydantic models for all data types:
 
@@ -165,7 +165,7 @@ Pydantic models for all data types:
 - Crypto wallets, Transactions, NFTs
 - And many more...
 
-### flowsint-enrichers
+### hudhud-enrichers
 
 Enricher modules that process data:
 
@@ -176,7 +176,7 @@ Enricher modules that process data:
 - Crypto enrichers (transactions, NFTs)
 - And many more...
 
-### flowsint-api
+### hudhud-api
 
 FastAPI server providing:
 
@@ -185,7 +185,7 @@ FastAPI server providing:
 - Graph database integration
 - Real-time event streaming
 
-### flowsint-app
+### hudhud-app
 
 Frontend application.
 
@@ -194,10 +194,10 @@ Frontend application.
 
 ## Development workflow
 
-1. **Adding new types**: Add to `flowsint-types` module
-2. **Adding new enrichers**: Add to `flowsint-enrichers` module
-3. **Adding new API endpoints**: Add to `flowsint-api` module
-4. **Adding new utilities**: Add to `flowsint-core` module
+1. **Adding new types**: Add to `hudhud-types` module
+2. **Adding new enrichers**: Add to `hudhud-enrichers` module
+3. **Adding new API endpoints**: Add to `hudhud-api` module
+4. **Adding new utilities**: Add to `hudhud-core` module
 
 ## Testing
 
@@ -205,19 +205,19 @@ Each module has its own (incomplete) test suite:
 
 ```bash
 # Test core module
-cd flowsint-core
+cd hudhud-core
 poetry run pytest
 
 # Test types module
-cd ../flowsint-types
+cd ../hudhud-types
 poetry run pytest
 
 # Test enrichers module
-cd ../flowsint-enrichers
+cd ../hudhud-enrichers
 poetry run pytest
 
 # Test API module
-cd ../flowsint-api
+cd ../hudhud-api
 poetry run pytest
 ```
 
@@ -235,7 +235,7 @@ poetry run pytest
 
 **Ethics:** Please read [ETHICS.md](./ETHICS.md) for responsible use guidelines.
 
-Flowsint is designed **strictly for lawful, ethical investigation and research purposes**.
+Hudhud is designed **strictly for lawful, ethical investigation and research purposes**.
 
 It was created to assist:
 - Cybersecurity researchers and analysts
@@ -243,7 +243,7 @@ It was created to assist:
 - Law enforcement or fraud investigation teams
 - Organizations conducting internal threat intelligence or digital risk analysis
 
-**Flowsint must not be used for:**
+**Hudhud must not be used for:**
 - Unauthorized intrusion, surveillance, or data collection
 - Harassment, doxxing, or targeting of individuals
 - Political manipulation, misinformation, or violation of privacy laws

@@ -1,6 +1,6 @@
 """Comprehensive tests for JSON import functionality."""
 
-from flowsint_core.imports.json.parse_json import parse_json
+from hudhud_core.imports.json.parse_json import parse_json
 
 # Standard JSON graph test data (node-link format)
 standard_json = b"""{

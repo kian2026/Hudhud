@@ -1,5 +1,5 @@
 {
-  "name": "flowsint",
+  "name": "hudhud",
   "version": "1.0.0",
   "license": "Apache-2.0",
   "description": "Graph analysis and intelligence platform",
@@ -27,13 +27,13 @@
     "neo4j-driver": "^5.27.0"
   },
   "devDependencies": {
-    "husky": "^9.1.7",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "commitizen": "^4.3.1",
-    "cz-conventional-changelog": "^3.3.0"
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.1.7"
   },
   "workspaces": [
-    "flowsint-app"
+    "hudhud-app"
   ]
 }

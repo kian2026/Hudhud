@@ -8,8 +8,8 @@ from tests.factories import (
     InvestigationFactory,
     ProfileFactory,
 )
-from flowsint_core.core.models import ChatMessage
-from flowsint_core.core.repositories import ChatRepository
+from hudhud_core.core.models import ChatMessage
+from hudhud_core.core.repositories import ChatRepository
 
 
 class TestChatRepository:

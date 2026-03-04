@@ -1,9 +1,9 @@
 import json
 from typing import Dict, List, Optional
 
-from flowsint_types import Individual
+from hudhud_types import Individual
 
-from flowsint_core.core.graph.serializer import TypeResolver
+from hudhud_core.core.graph.serializer import TypeResolver
 
 from ..types import Edge, Entity, EntityPreview, FileParseResult
 from ..utils import create_entity_preview
@@ -110,7 +110,7 @@ def _parse_node(
         return create_entity_preview(label)
     # Try to resolve the type via the registry service
     if not type_resolver:
-        from flowsint_core.core.services.type_registry_service import local_type_resolver
+        from hudhud_core.core.services.type_registry_service import local_type_resolver
         type_resolver = local_type_resolver
     DetectedType = type_resolver(type.lower())
     if not DetectedType:

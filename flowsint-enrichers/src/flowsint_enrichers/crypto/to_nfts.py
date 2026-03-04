@@ -1,16 +1,16 @@
 import os
 from typing import List, Dict, Any, Optional, Union
 import requests
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_enrichers.registry import flowsint_enricher
-from flowsint_types.wallet import CryptoWallet, CryptoNFT
-from flowsint_core.core.logger import Logger
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_enrichers.registry import hudhud_enricher
+from hudhud_types.wallet import CryptoWallet, CryptoNFT
+from hudhud_core.core.logger import Logger
 from dotenv import load_dotenv
 
 load_dotenv()
 
 
-@flowsint_enricher
+@hudhud_enricher
 class CryptoWalletAddressToNFTs(Enricher):
     """[ETHERSCAN] Resolve NFTs for a wallet address (ETH)."""
 

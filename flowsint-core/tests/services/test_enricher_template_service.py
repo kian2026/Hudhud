@@ -2,11 +2,11 @@
 import pytest
 
 from tests.factories import EnricherTemplateFactory, ProfileFactory
-from flowsint_core.core.repositories import EnricherTemplateRepository
-from flowsint_core.core.services.enricher_template_service import (
+from hudhud_core.core.repositories import EnricherTemplateRepository
+from hudhud_core.core.services.enricher_template_service import (
     EnricherTemplateService,
 )
-from flowsint_core.core.services.exceptions import ConflictError, NotFoundError
+from hudhud_core.core.services.exceptions import ConflictError, NotFoundError
 
 
 class TestEnricherTemplateService:

@@ -1,12 +1,12 @@
 from pydantic import IPvAnyNetwork, Field, model_validator
 from typing import Self
 import ipaddress
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class CIDR(FlowsintType):
+@hudhud_type
+class CIDR(HudhudType):
     """Represents a CIDR (Classless Inter-Domain Routing) network block."""
 
     network: IPvAnyNetwork = Field(

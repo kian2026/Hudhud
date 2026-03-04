@@ -3,12 +3,12 @@ from typing import Optional, Self
 
 from pydantic import Field, HttpUrl, field_validator, model_validator
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class CryptoWallet(FlowsintType):
+@hudhud_type
+class CryptoWallet(HudhudType):
     """Represents a cryptocurrency wallet."""
 
     address: str = Field(
@@ -84,8 +84,8 @@ class CryptoWallet(FlowsintType):
         return False
 
 
-@flowsint_type
-class CryptoWalletTransaction(FlowsintType):
+@hudhud_type
+class CryptoWalletTransaction(HudhudType):
     """Represents a cryptocurrency transaction."""
 
     source: CryptoWallet = Field(
@@ -197,8 +197,8 @@ class CryptoWalletTransaction(FlowsintType):
         return self
 
 
-@flowsint_type
-class CryptoNFT(FlowsintType):
+@hudhud_type
+class CryptoNFT(HudhudType):
     """Represents a Non-Fungible Token (NFT) held or minted by a wallet."""
 
     wallet: CryptoWallet = Field(..., description="Source wallet", title="Wallet")

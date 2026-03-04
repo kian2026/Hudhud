@@ -1,12 +1,12 @@
 from pydantic import Field, model_validator
 from typing import Optional, List, Self
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class RiskProfile(FlowsintType):
+@hudhud_type
+class RiskProfile(HudhudType):
     """Represents a comprehensive risk assessment profile for an entity."""
 
     entity_id: str = Field(..., description="Entity identifier", title="Entity ID", json_schema_extra={"primary": True})

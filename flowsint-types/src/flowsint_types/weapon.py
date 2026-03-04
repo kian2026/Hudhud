@@ -1,12 +1,12 @@
 from pydantic import Field, model_validator
 from typing import Literal, Optional, List, Self
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Weapon(FlowsintType):
+@hudhud_type
+class Weapon(HudhudType):
     """Represents a weapon with detailed specifications and forensic information."""
 
     name: str = Field(..., description="Weapon name or identifier", title="Name", json_schema_extra={"primary": True})

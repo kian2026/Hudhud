@@ -1,6 +1,6 @@
-from flowsint_types import Domain, Ip, Phone
+from hudhud_types import Domain, Ip, Phone
 
-from flowsint_core.imports import detect_type
+from hudhud_core.imports import detect_type
 
 
 def test_detection_domains():

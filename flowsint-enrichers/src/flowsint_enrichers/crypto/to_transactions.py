@@ -4,10 +4,10 @@ import requests
 import requests.exceptions
 from datetime import datetime
 from dotenv import load_dotenv
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_enrichers.registry import flowsint_enricher
-from flowsint_types.wallet import CryptoWallet, CryptoWalletTransaction
-from flowsint_core.core.logger import Logger
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_enrichers.registry import hudhud_enricher
+from hudhud_types.wallet import CryptoWallet, CryptoWalletTransaction
+from hudhud_core.core.logger import Logger
 
 load_dotenv()
 
@@ -16,7 +16,7 @@ def wei_to_eth(wei_str):
     return int(wei_str) / 10**18
 
 
-@flowsint_enricher
+@hudhud_enricher
 class CryptoWalletAddressToTransactions(Enricher):
     """[ETHERSCAN] Resolve transactions for a wallet address (ETH)."""
 

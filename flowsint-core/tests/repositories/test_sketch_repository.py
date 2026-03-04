@@ -2,7 +2,7 @@
 from uuid import uuid4
 
 from tests.factories import InvestigationFactory, ProfileFactory, SketchFactory
-from flowsint_core.core.repositories import SketchRepository
+from hudhud_core.core.repositories import SketchRepository
 
 
 class TestSketchRepository:

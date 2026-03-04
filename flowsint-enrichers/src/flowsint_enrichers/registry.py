@@ -1,10 +1,10 @@
 """
 This module provides an automatic enricher registration system using decorators.
-All Enricher subclasses can be decorated with @flowsint_enricher to automatically
+All Enricher subclasses can be decorated with @hudhud_enricher to automatically
 register themselves in the global ENRICHER_REGISTRY.
 
 Auto-discovery is performed by calling load_all_enrichers() which imports all modules
-in the flowsint_enrichers package, triggering the @flowsint_enricher decorators.
+in the hudhud_enrichers package, triggering the @hudhud_enricher decorators.
 """
 
 import inspect
@@ -12,7 +12,7 @@ import importlib
 import os
 import sys
 from typing import Dict, Optional, Type, List, Any, TypeVar
-from flowsint_core.core.enricher_base import Enricher
+from hudhud_core.core.enricher_base import Enricher
 
 
 E = TypeVar("E", bound=Enricher)
@@ -20,7 +20,7 @@ E = TypeVar("E", bound=Enricher)
 
 class EnricherRegistry:
     """
-    Global registry for Flowsint enrichers.
+    Global registry for Hudhud enrichers.
     Stores mappings: enricher name -> enricher class
     """
 
@@ -127,12 +127,12 @@ class EnricherRegistry:
 ENRICHER_REGISTRY = EnricherRegistry()
 
 
-def flowsint_enricher(cls: Type[E]) -> Type[E]:
+def hudhud_enricher(cls: Type[E]) -> Type[E]:
     """
     Decorator to automatically register an Enricher subclass.
 
     Usage:
-        @flowsint_enricher
+        @hudhud_enricher
         class SubdomainEnricher(Enricher):
             InputType = Domain
             OutputType = Domain
@@ -156,11 +156,11 @@ _enrichers_loaded = False
 
 def load_all_enrichers() -> None:
     """
-    Automatically discover and import all enricher modules in the flowsint_enrichers package.
+    Automatically discover and import all enricher modules in the hudhud_enrichers package.
 
     This function uses importlib to dynamically import all Python modules in the
-    flowsint_enrichers package (including subdirectories), which triggers the
-    @flowsint_enricher decorators and registers all enrichers in ENRICHER_REGISTRY.
+    hudhud_enrichers package (including subdirectories), which triggers the
+    @hudhud_enricher decorators and registers all enrichers in ENRICHER_REGISTRY.
 
     Features:
     - Only imports modules once (cached via _enrichers_loaded flag)
@@ -178,13 +178,13 @@ def load_all_enrichers() -> None:
         return
 
     try:
-        # Get the flowsint_enrichers package
-        import flowsint_enrichers
+        # Get the hudhud_enrichers package
+        import hudhud_enrichers
 
-        package = flowsint_enrichers
+        package = hudhud_enrichers
     except ImportError:
         # Package not available - skip auto-discovery
-        print("Warning: flowsint_enrichers package not found", file=sys.stderr)
+        print("Warning: hudhud_enrichers package not found", file=sys.stderr)
         _enrichers_loaded = True
         return
 
@@ -220,7 +220,7 @@ def load_all_enrichers() -> None:
             if module_name in sys.modules:
                 continue
 
-            # Import the module to trigger @flowsint_enricher decorators
+            # Import the module to trigger @hudhud_enricher decorators
             try:
                 importlib.import_module(module_name)
             except Exception as e:

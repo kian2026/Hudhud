@@ -1,12 +1,12 @@
 from pydantic import Field, model_validator
 from typing import Optional, List, Self
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class DNSRecord(FlowsintType):
+@hudhud_type
+class DNSRecord(HudhudType):
     """Represents a DNS record with type, value, and security information."""
 
     value: str = Field(

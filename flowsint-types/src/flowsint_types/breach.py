@@ -1,11 +1,11 @@
 from typing import List, Optional, Dict, Self
 from pydantic import Field, model_validator
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Breach(FlowsintType):
+@hudhud_type
+class Breach(HudhudType):
     """Represents a data breach incident with affected accounts and details."""
 
     name: str = Field(

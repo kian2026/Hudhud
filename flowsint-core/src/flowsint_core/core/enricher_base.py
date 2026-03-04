@@ -58,8 +58,8 @@ class Enricher(ABC):
 
     ```python
     from typing import List
-    from flowsint_types import Domain
-    from flowsint_types import Ip
+    from hudhud_types import Domain
+    from hudhud_types import Ip
 
     class MyEnricher(Enricher):
         # Define types as class attributes (base types, not lists)
@@ -450,7 +450,7 @@ class Enricher(ABC):
         The following properties are automatically added to every node:
         - type: Lowercase version of node_type
         - sketch_id: Current sketch ID from enricher context
-        - label: Automatically computed by FlowsintType, or defaults to key_value if not provided
+        - label: Automatically computed by HudhudType, or defaults to key_value if not provided
         - created_at: ISO 8601 UTC timestamp (only on creation, not updates)
 
         Use Pydantic object directly:
@@ -462,7 +462,7 @@ class Enricher(ABC):
             node_obj: Either a Pydantic object or node label string
             **properties: Additional node properties or overrides
         """
-        self._graph_service.create_node_from_flowsint_type(node_obj=node_obj)
+        self._graph_service.create_node_from_hudhud_type(node_obj=node_obj)
 
     def create_relationship(
         self,

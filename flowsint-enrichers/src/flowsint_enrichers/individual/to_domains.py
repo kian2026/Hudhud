@@ -3,11 +3,11 @@ import re
 from typing import Any, Dict, List, Optional, Set, Union
 
 from dotenv import load_dotenv
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_core.core.logger import Logger
-from flowsint_types import Domain, Email, Individual, Location, Phone
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_core.core.logger import Logger
+from hudhud_types import Domain, Email, Individual, Location, Phone
 
-from flowsint_enrichers.registry import flowsint_enricher
+from hudhud_enrichers.registry import hudhud_enricher
 from tools.network.whoxy import WhoxyTool
 
 load_dotenv()
@@ -15,7 +15,7 @@ load_dotenv()
 WHOXY_API_KEY = os.getenv("WHOXY_API_KEY")
 
 
-@flowsint_enricher
+@hudhud_enricher
 class IndividualToDomainsEnricher(Enricher):
     """[WHOXY] Takes an individual and returns the domains it registered."""
 

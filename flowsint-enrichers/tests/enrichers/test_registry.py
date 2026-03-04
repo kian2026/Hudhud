@@ -1,5 +1,5 @@
 import pytest
-from flowsint_enrichers import ENRICHER_REGISTRY
+from hudhud_enrichers import ENRICHER_REGISTRY
 
 
 def test_enricher_registry_enricher_found():

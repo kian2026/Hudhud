@@ -1,4 +1,4 @@
-"""Pytest configuration for flowsint-core tests."""
+"""Pytest configuration for hudhud-core tests."""
 
 import os
 from unittest.mock import MagicMock
@@ -8,7 +8,7 @@ import pytest
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker
 
-from flowsint_core.core.models import Base
+from hudhud_core.core.models import Base
 
 
 @pytest.fixture(autouse=True)
@@ -23,7 +23,7 @@ def setup_test_environment(monkeypatch):
 def mock_logger(monkeypatch):
     """Mock the Logger to avoid database calls during tests."""
     mock = MagicMock()
-    monkeypatch.setattr("flowsint_core.core.logger.Logger", mock)
+    monkeypatch.setattr("hudhud_core.core.logger.Logger", mock)
     return mock
 
 

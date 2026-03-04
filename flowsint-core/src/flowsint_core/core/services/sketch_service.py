@@ -130,7 +130,7 @@ class SketchService(BaseService):
         graph_data = graph_service.get_sketch_graph()
 
         if format == "inline":
-            from flowsint_core.utils import get_inline_relationships
+            from hudhud_core.utils import get_inline_relationships
 
             return get_inline_relationships(graph_data.nodes, graph_data.edges)
 
@@ -296,7 +296,7 @@ class SketchService(BaseService):
         new_node_id: str,
         node_data: Dict[str, Any],
     ) -> Dict[str, Any]:
-        from flowsint_core.utils import flatten
+        from hudhud_core.utils import flatten
 
         self._get_sketch_with_permission(sketch_id, user_id, ["update"])
 

@@ -3,7 +3,7 @@ Template-based enricher that executes HTTP requests defined in YAML templates.
 
 This enricher allows creating declarative enrichers without writing Python code.
 Templates define:
-- Input/output types from the FlowsintType registry
+- Input/output types from the HudhudType registry
 - HTTP request configuration (method, URL, headers, params, body)
 - Response parsing and field mapping
 - Optional vault secrets for API keys
@@ -48,17 +48,17 @@ import xml.etree.ElementTree as ET
 from typing import Any, Dict, List, Optional
 
 import httpx
-from flowsint_types import FlowsintType, get_type
+from hudhud_types import HudhudType, get_type
 
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_core.core.logger import Logger
-from flowsint_core.templates.loader.yaml_loader import (
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_core.core.logger import Logger
+from hudhud_core.templates.loader.yaml_loader import (
     SSRFError,
     TemplateRenderError,
     YamlLoader,
     validate_url_safe,
 )
-from flowsint_core.templates.types import Template, TemplateRetryConfig
+from hudhud_core.templates.types import Template, TemplateRetryConfig
 
 
 class TemplateEnricherError(Exception):
@@ -82,8 +82,8 @@ class TemplateEnricher(Enricher):
     - SSRF protection
     """
 
-    InputType = FlowsintType
-    OutputType = FlowsintType
+    InputType = HudhudType
+    OutputType = HudhudType
 
     def __init__(
         self,
@@ -125,8 +125,8 @@ class TemplateEnricher(Enricher):
             )
         return schema
 
-    def _detect_type(self, input_type: str) -> type[FlowsintType]:
-        """Resolve a type name to its FlowsintType class."""
+    def _detect_type(self, input_type: str) -> type[HudhudType]:
+        """Resolve a type name to its HudhudType class."""
         DetectedType = get_type(input_type)
         if not DetectedType:
             raise TypeError(f"Type '{input_type}' is not present in registry.")
@@ -164,7 +164,7 @@ class TemplateEnricher(Enricher):
         Build the values dict for template rendering from input object and secrets.
 
         Args:
-            input_obj: The input FlowsintType object
+            input_obj: The input HudhudType object
 
         Returns:
             Dictionary of variable names to their string values
@@ -387,7 +387,7 @@ class TemplateEnricher(Enricher):
 
         Args:
             client: The httpx AsyncClient
-            input_obj: The input FlowsintType object
+            input_obj: The input HudhudType object
 
         Returns:
             List of OutputType instances (can be multiple for array responses)

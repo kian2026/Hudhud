@@ -1,4 +1,4 @@
-from flowsint_core.utils import flatten, unflatten
+from hudhud_core.utils import flatten, unflatten
 
 my_dict = {
     "root_key_1": "value 1",

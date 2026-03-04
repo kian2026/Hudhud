@@ -2,7 +2,7 @@
 set -e
 
 # Ensure virtualenv binaries are in PATH
-export PATH="/app/flowsint-api/.venv/bin:$PATH"
+export PATH="/app/hudhud-api/.venv/bin:$PATH"
 
 if [ "$SKIP_MIGRATIONS" != "true" ]; then
   echo "Running database migrations..."

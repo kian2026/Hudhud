@@ -1,11 +1,11 @@
 """
-Type registry service for managing flowsint types.
+Type registry service for managing hudhud types.
 """
 
 from typing import Any, Dict, List, Optional, Type
 from uuid import UUID, uuid4
 
-from flowsint_types import FlowsintType
+from hudhud_types import HudhudType
 from pydantic import BaseModel, TypeAdapter, create_model
 from sqlalchemy.orm import Session
 
@@ -14,17 +14,17 @@ from ..repositories import CustomTypeRepository
 from .base import BaseService
 
 
-def local_type_resolver(type_name: str) -> Type[FlowsintType] | None:
+def local_type_resolver(type_name: str) -> Type[HudhudType] | None:
     """Resolve a type using only the local TYPE_REGISTRY (no DB).
 
     Useful as a fallback when no TypeRegistryService is available (tests, CLI, etc.).
     """
-    from flowsint_types import TYPE_REGISTRY
+    from hudhud_types import TYPE_REGISTRY
 
     return TYPE_REGISTRY.get_lowercase(type_name)
 
 
-def _build_pydantic_model_from_schema(name: str, schema: dict) -> Type[FlowsintType]:
+def _build_pydantic_model_from_schema(name: str, schema: dict) -> Type[HudhudType]:
     """Build a dynamic Pydantic model from a custom type JSON schema."""
     properties = schema.get("properties", {})
     required = set(schema.get("required", []))
@@ -35,7 +35,7 @@ def _build_pydantic_model_from_schema(name: str, schema: dict) -> Type[FlowsintT
         default = ... if prop in required else None
         fields[prop] = (annotation, default)
 
-    return create_model(name, __base__=FlowsintType, **fields)
+    return create_model(name, __base__=HudhudType, **fields)
 
 
 class TypeRegistryService(BaseService):
@@ -47,12 +47,12 @@ class TypeRegistryService(BaseService):
         super().__init__(db, **kwargs)
         self._custom_type_repo = custom_type_repo
 
-    def resolve_type(self, type_name: str, user_id: UUID) -> Type[FlowsintType] | None:
-        """Resolve a type name to a FlowsintType class.
+    def resolve_type(self, type_name: str, user_id: UUID) -> Type[HudhudType] | None:
+        """Resolve a type name to a HudhudType class.
 
         Checks the local TYPE_REGISTRY first, then falls back to custom types in DB.
         """
-        from flowsint_types import TYPE_REGISTRY
+        from hudhud_types import TYPE_REGISTRY
 
         model = TYPE_REGISTRY.get_lowercase(type_name)
         if model:
@@ -73,13 +73,13 @@ class TypeRegistryService(BaseService):
             graph_service = create_graph_service(sketch_id, type_resolver=resolver)
         """
 
-        def resolver(type_name: str) -> Type[FlowsintType] | None:
+        def resolver(type_name: str) -> Type[HudhudType] | None:
             return self.resolve_type(type_name, user_id)
 
         return resolver
 
     def get_type(self, user_id: UUID, type_name: str) -> Dict[str, Any] | None:
-        from flowsint_types.registry import get_type as get_type_from_registry
+        from hudhud_types.registry import get_type as get_type_from_registry
 
         model = get_type_from_registry(type_name, case_sensitive=True)
 
@@ -99,7 +99,7 @@ class TypeRegistryService(BaseService):
             return self._extract_input_schema(custom_type, label_key="nodeLabel")
 
     def get_types_list(self, user_id: UUID) -> List[Dict[str, Any]]:
-        from flowsint_types.registry import get_type
+        from hudhud_types.registry import get_type
 
         category_definitions = self._get_category_definitions()
 

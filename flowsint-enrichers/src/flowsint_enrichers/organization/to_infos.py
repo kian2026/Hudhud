@@ -1,14 +1,14 @@
 from typing import List, Dict, Any, Union
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_enrichers.registry import flowsint_enricher
-from flowsint_types.organization import Organization
-from flowsint_types.address import Location
-from flowsint_types.individual import Individual
-from flowsint_core.core.logger import Logger
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_enrichers.registry import hudhud_enricher
+from hudhud_types.organization import Organization
+from hudhud_types.address import Location
+from hudhud_types.individual import Individual
+from hudhud_core.core.logger import Logger
 from tools.organizations.sirene import SireneTool
 
 
-@flowsint_enricher
+@hudhud_enricher
 class OrgToInfosEnricher(Enricher):
     """Enrich Organization with data from SIRENE (France only)."""
 

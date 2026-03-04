@@ -1,4 +1,4 @@
-from flowsint_types import (
+from hudhud_types import (
     ASN,
     CIDR,
     Credential,

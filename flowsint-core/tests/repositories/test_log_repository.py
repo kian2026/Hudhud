@@ -8,7 +8,7 @@ from tests.factories import (
     ProfileFactory,
     SketchFactory,
 )
-from flowsint_core.core.repositories import LogRepository
+from hudhud_core.core.repositories import LogRepository
 
 
 class TestLogRepository:

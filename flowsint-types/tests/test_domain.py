@@ -1,6 +1,6 @@
 import pytest
 
-from flowsint_types.domain import Domain
+from hudhud_types.domain import Domain
 
 
 def test_valid_domain_from_object():

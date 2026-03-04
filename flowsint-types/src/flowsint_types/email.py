@@ -1,12 +1,12 @@
 from pydantic import Field, EmailStr, model_validator
 from typing import Any, Self
 import re
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Email(FlowsintType):
+@hudhud_type
+class Email(HudhudType):
     """Represents an email address."""
 
     email: EmailStr = Field(..., description="Email address", title="Email Address", json_schema_extra={"primary": True})

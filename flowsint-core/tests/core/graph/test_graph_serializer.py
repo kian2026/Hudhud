@@ -1,9 +1,9 @@
 from datetime import datetime
 
 import pytest
-from flowsint_types import Domain, Ip
+from hudhud_types import Domain, Ip
 
-from flowsint_core.core.graph import (
+from hudhud_core.core.graph import (
     GraphEdge,
     GraphNode,
     GraphSerializer,
@@ -88,10 +88,10 @@ def test_deserializer():
     assert output == graph_node
 
 
-def test_serialize_from_flowsint_type():
+def test_serialize_from_hudhud_type():
     domain = Domain(domain="domain.com", nodeLabel="domain.com", root=True)
 
-    neo4j_dict = GraphSerializer.flowsint_type_to_neo4j_dict(domain)
+    neo4j_dict = GraphSerializer.hudhud_type_to_neo4j_dict(domain)
 
     # Check static fields
     assert neo4j_dict["id"] == ""
@@ -144,33 +144,33 @@ class TestCleanEmptyValues:
         assert result == {}
 
 
-class TestParseFlowsintType:
+class TestParseHudhudType:
     def test_parses_domain(self):
         entity = {"domain": "example.com", "root": True}
-        result = GraphSerializer.parse_flowsint_type(entity, "domain")
+        result = GraphSerializer.parse_hudhud_type(entity, "domain")
         assert isinstance(result, Domain)
         assert result.domain == "example.com"
         assert result.root is True
 
     def test_parses_ip(self):
         entity = {"address": "192.168.1.1"}
-        result = GraphSerializer.parse_flowsint_type(entity, "ip")
+        result = GraphSerializer.parse_hudhud_type(entity, "ip")
         assert isinstance(result, Ip)
         assert result.address == "192.168.1.1"
 
     def test_cleans_empty_values_before_parsing(self):
         entity = {"domain": "example.com", "extra": "", "other": None}
-        result = GraphSerializer.parse_flowsint_type(entity, "domain")
+        result = GraphSerializer.parse_hudhud_type(entity, "domain")
         assert isinstance(result, Domain)
         assert result.domain == "example.com"
 
     def test_raises_on_unknown_type(self):
         entity = {"key": "value"}
         with pytest.raises(ValueError, match="Unknown type: unknowntype"):
-            GraphSerializer.parse_flowsint_type(entity, "unknowntype")
+            GraphSerializer.parse_hudhud_type(entity, "unknowntype")
 
 
-class TestGraphNodeToFlowsintType:
+class TestGraphNodeToHudhudType:
     def test_extracts_node_properties(self):
         domain = Domain(domain="example.com")
         node = GraphNode(
@@ -180,7 +180,7 @@ class TestGraphNodeToFlowsintType:
             nodeProperties=domain,
             nodeMetadata=NodeMetadata(),
         )
-        result = GraphSerializer.graph_node_to_flowsint_type(node)
+        result = GraphSerializer.graph_node_to_hudhud_type(node)
         assert result is domain
         assert isinstance(result, Domain)
         assert result.domain == "example.com"
@@ -210,7 +210,7 @@ class TestGraphDictToGraphEdge:
 
 
 class TestGraphEdgeToGraphDict:
-    def test_with_flowsint_types(self):
+    def test_with_hudhud_types(self):
         from_obj = Domain(domain="source.com")
         to_obj = Domain(domain="target.com")
         result = GraphSerializer.graph_edge_to_neo4j_dict(from_obj, to_obj, "LINKS_TO")

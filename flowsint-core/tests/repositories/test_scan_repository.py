@@ -6,8 +6,8 @@ from tests.factories import (
     ScanFactory,
     SketchFactory,
 )
-from flowsint_core.core.repositories import ScanRepository
-from flowsint_core.core.types import Role
+from hudhud_core.core.repositories import ScanRepository
+from hudhud_core.core.types import Role
 
 
 class TestScanRepository:

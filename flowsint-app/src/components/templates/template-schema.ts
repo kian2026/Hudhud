@@ -1,4 +1,4 @@
-// JSON Schema for template YAML validation - matches flowsint_core/templates/types.py
+// JSON Schema for template YAML validation - matches hudhud_core/templates/types.py
 export const templateSchema = {
   type: 'object',
   required: ['name', 'category', 'version', 'input', 'request', 'output', 'response'],
@@ -29,7 +29,7 @@ export const templateSchema = {
       properties: {
         type: {
           type: 'string',
-          description: 'Flowsint Type the template takes as input'
+          description: 'Hudhud Type the template takes as input'
         },
         key: {
           type: 'string',
@@ -111,7 +111,7 @@ export const templateSchema = {
       properties: {
         type: {
           type: 'string',
-          description: 'Flowsint Type that the template returns'
+          description: 'Hudhud Type that the template returns'
         },
         is_array: {
           type: 'boolean',
@@ -216,7 +216,7 @@ request:
     Accept: application/vnd.github+json
     Authorization: Bearer {{secrets.GITHUB_TOKEN}}
     X-GitHub-Api-Version: "2022-11-28"
-    User-Agent: flowsint-enricher
+    User-Agent: hudhud-enricher
   timeout: 15
 
 response:

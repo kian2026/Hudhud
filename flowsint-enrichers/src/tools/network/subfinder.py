@@ -1,6 +1,6 @@
 from typing import Any, List
 from ..dockertool import DockerTool
-from flowsint_core.utils import is_valid_domain
+from hudhud_core.utils import is_valid_domain
 
 
 class SubfinderTool(DockerTool):

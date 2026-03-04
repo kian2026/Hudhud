@@ -15,8 +15,8 @@ import time
 from unittest.mock import Mock, patch, MagicMock
 from uuid import uuid4
 
-from flowsint_core.core.logger import LoggerSingleton
-from flowsint_core.core.enums import EventLevel
+from hudhud_core.core.logger import LoggerSingleton
+from hudhud_core.core.enums import EventLevel
 
 
 @pytest.fixture
@@ -38,14 +38,14 @@ def mock_get_db(mock_db_session):
     def mock_generator():
         yield mock_db_session
 
-    with patch('flowsint_core.core.logger.get_db', mock_generator):
+    with patch('hudhud_core.core.logger.get_db', mock_generator):
         yield mock_generator
 
 
 @pytest.fixture
 def mock_emit_event():
     """Mock the emit_event_task."""
-    with patch('flowsint_core.core.logger.emit_event_task') as mock:
+    with patch('hudhud_core.core.logger.emit_event_task') as mock:
         mock.apply = Mock()
         yield mock
 

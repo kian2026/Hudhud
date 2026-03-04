@@ -5,10 +5,10 @@ Provides basic pattern matching for common entity types.
 
 from typing import Optional, Type
 
-from flowsint_types import TYPE_REGISTRY, FlowsintType
+from hudhud_types import TYPE_REGISTRY, HudhudType
 
 
-def detect_type(value: str) -> Optional[Type[FlowsintType]]:
+def detect_type(value: str) -> Optional[Type[HudhudType]]:
     """Detect entity type from a string value using built-in type patterns.
 
     Note: This only checks built-in types (TYPE_REGISTRY) since custom types

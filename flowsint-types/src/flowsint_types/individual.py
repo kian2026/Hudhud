@@ -4,14 +4,14 @@ from pydantic import Field, field_validator, model_validator
 
 from .address import Location
 from .email import Email
-from .flowsint_base import FlowsintType
+from .hudhud_base import HudhudType
 from .ip import Ip
 from .phone import Phone
-from .registry import flowsint_type
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Individual(FlowsintType):
+@hudhud_type
+class Individual(HudhudType):
     """Represents an individual person with comprehensive personal information."""
 
     # Basic Information

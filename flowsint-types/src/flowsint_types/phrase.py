@@ -1,12 +1,12 @@
 from pydantic import Field, model_validator
 from typing import Any, Self
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Phrase(FlowsintType):
+@hudhud_type
+class Phrase(HudhudType):
     """Represents a phrase or text content."""
 
     text: Any = Field(

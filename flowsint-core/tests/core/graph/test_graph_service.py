@@ -3,8 +3,8 @@
 import pytest
 from unittest.mock import MagicMock, patch
 
-from flowsint_types import Domain, Ip
-from flowsint_core.core.graph import (
+from hudhud_types import Domain, Ip
+from hudhud_core.core.graph import (
     GraphService,
     create_graph_service,
     GraphNode,
@@ -95,7 +95,7 @@ class TestCreateNode:
         assert result is not None
         assert repo.get_node_count("sketch-1") == 1
 
-    def test_create_node_with_flowsint_type_raises(self):
+    def test_create_node_with_hudhud_type_raises(self):
         repo = InMemoryGraphRepository()
         service = GraphService(sketch_id="sketch-1", repository=repo)
         domain = Domain(domain="example.com")
@@ -123,20 +123,20 @@ class TestCreateNode:
         mock_repo.create_node.assert_not_called()
 
 
-class TestCreateNodeFromFlowsintType:
-    def test_create_node_from_flowsint_type(self):
+class TestCreateNodeFromHudhudType:
+    def test_create_node_from_hudhud_type(self):
         mock_repo = MagicMock()
         mock_repo.create_node.return_value = "elem-123"
 
         service = GraphService(sketch_id="sketch-1", repository=mock_repo)
         domain = Domain(domain="example.com")
 
-        result = service.create_node_from_flowsint_type(domain)
+        result = service.create_node_from_hudhud_type(domain)
 
         assert result == "elem-123"
         mock_repo.create_node.assert_called_once()
 
-    def test_create_node_from_flowsint_type_with_graph_node_raises(self):
+    def test_create_node_from_hudhud_type_with_graph_node_raises(self):
         repo = InMemoryGraphRepository()
         service = GraphService(sketch_id="sketch-1", repository=repo)
         node = GraphNode(
@@ -148,18 +148,18 @@ class TestCreateNodeFromFlowsintType:
         )
 
         with pytest.raises(
-            Exception, match="create_node_from_flowsint_type method takes a FlowsintType"
+            Exception, match="create_node_from_hudhud_type method takes a HudhudType"
         ):
-            service.create_node_from_flowsint_type(node)
+            service.create_node_from_hudhud_type(node)
 
-    def test_create_node_from_flowsint_type_with_batching(self):
+    def test_create_node_from_hudhud_type_with_batching(self):
         mock_repo = MagicMock()
         service = GraphService(
             sketch_id="sketch-1", repository=mock_repo, enable_batching=True
         )
         domain = Domain(domain="example.com")
 
-        service.create_node_from_flowsint_type(domain)
+        service.create_node_from_hudhud_type(domain)
 
         mock_repo.add_to_batch.assert_called_once()
 
@@ -551,9 +551,9 @@ class TestCreateGraphServiceFactory:
         mock_repo = MagicMock()
 
         with patch(
-            "flowsint_core.core.graph.service.Neo4jGraphRepository", return_value=mock_repo
+            "hudhud_core.core.graph.service.Neo4jGraphRepository", return_value=mock_repo
         ) as MockRepoClass:
-            with patch("flowsint_core.core.logger.Logger") as MockLogger:
+            with patch("hudhud_core.core.logger.Logger") as MockLogger:
                 service = create_graph_service(
                     sketch_id="sketch-1",
                     enable_batching=True,
@@ -570,9 +570,9 @@ class TestCreateGraphServiceFactory:
         mock_repo = MagicMock()
 
         with patch(
-            "flowsint_core.core.graph.service.Neo4jGraphRepository", return_value=mock_repo
+            "hudhud_core.core.graph.service.Neo4jGraphRepository", return_value=mock_repo
         ):
-            with patch("flowsint_core.core.logger.Logger"):
+            with patch("hudhud_core.core.logger.Logger"):
                 service = create_graph_service(sketch_id="sketch-1")
 
                 assert service._sketch_id == "sketch-1"

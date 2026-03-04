@@ -1,14 +1,14 @@
 from typing import Any, Dict, List, Optional, Union
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_enrichers.registry import flowsint_enricher
-from flowsint_types.ip import Ip
-from flowsint_types.port import Port
-from flowsint_core.utils import is_valid_ip
-from flowsint_core.core.logger import Logger
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_enrichers.registry import hudhud_enricher
+from hudhud_types.ip import Ip
+from hudhud_types.port import Port
+from hudhud_core.utils import is_valid_ip
+from hudhud_core.core.logger import Logger
 from tools.network.naabu import NaabuTool
 
 
-@flowsint_enricher
+@hudhud_enricher
 class IpToPortsEnricher(Enricher):
     """[NAABU] Performs port scanning on IP addresses to discover open ports and services."""
 

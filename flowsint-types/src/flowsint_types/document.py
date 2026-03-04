@@ -1,12 +1,12 @@
 from pydantic import Field, model_validator
 from typing import Optional, List, Self
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Document(FlowsintType):
+@hudhud_type
+class Document(HudhudType):
     """Represents a document with metadata, security, and content information."""
 
     title: str = Field(..., description="Document title", title="Title", json_schema_extra={"primary": True})

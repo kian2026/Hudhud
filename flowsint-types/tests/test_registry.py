@@ -1,5 +1,5 @@
-from flowsint_types import Domain, Individual, Ip, get_type
-from flowsint_types.registry import TYPE_REGISTRY
+from hudhud_types import Domain, Individual, Ip, get_type
+from hudhud_types.registry import TYPE_REGISTRY
 
 
 def test_get_all():

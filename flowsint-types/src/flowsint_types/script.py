@@ -1,12 +1,12 @@
 from pydantic import Field, model_validator
 from typing import Optional, List, Self
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Script(FlowsintType):
+@hudhud_type
+class Script(HudhudType):
     """Represents a script or code file with analysis and security information."""
 
     script_id: str = Field(

@@ -6,7 +6,7 @@ from typing import Callable
 from uuid import UUID
 from fastapi import BackgroundTasks
 from sqlalchemy.orm import Session
-from flowsint_core.core.models import Sketch, Investigation
+from hudhud_core.core.models import Sketch, Investigation
 
 
 def update_sketch_last_modified(db: Session, sketch_id: str | UUID) -> None:

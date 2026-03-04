@@ -3,7 +3,7 @@ import pytest
 import uuid
 from typing import List, Dict, Any
 from unittest.mock import Mock, MagicMock, patch
-from flowsint_core.core.enricher_base import Enricher
+from hudhud_core.core.enricher_base import Enricher
 
 
 class MockEnricher(Enricher):

@@ -1,1 +1,1 @@
-# Tests for flowsint-types
+# Tests for hudhud-types

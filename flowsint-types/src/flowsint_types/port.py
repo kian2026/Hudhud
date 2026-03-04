@@ -1,11 +1,11 @@
 from pydantic import Field, field_validator, model_validator
 from typing import Optional, Self
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Port(FlowsintType):
+@hudhud_type
+class Port(HudhudType):
     """Represents an open network port related to an IP address."""
 
     number: int = Field(..., description="Port number", title="Port Number", json_schema_extra={"primary": True})

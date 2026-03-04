@@ -8,10 +8,10 @@ handling file parsing, entity conversion, and batch creation.
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional
 
-from flowsint_types import FlowsintType
+from hudhud_types import HudhudType
 
-from flowsint_core.core.graph import GraphSerializer, GraphService
-from flowsint_core.core.graph.serializer import TypeResolver
+from hudhud_core.core.graph import GraphSerializer, GraphService
+from hudhud_core.core.graph.serializer import TypeResolver
 
 
 @dataclass
@@ -42,7 +42,7 @@ class ImportService:
 
     This service handles:
     - File analysis and parsing
-    - Entity conversion to FlowsintTypes
+    - Entity conversion to HudhudTypes
     - Batch node and edge creation
     """
 
@@ -81,7 +81,7 @@ class ImportService:
         Raises:
             ValueError: If file format is unsupported or parsing fails
         """
-        from flowsint_core.imports import parse_import_file
+        from hudhud_core.imports import parse_import_file
 
         return parse_import_file(
             file_content=file_content,
@@ -108,7 +108,7 @@ class ImportService:
         # Filter only entities marked for inclusion
         entities_to_import = [m for m in entity_mappings if m.include]
 
-        # Convert entity mappings to FlowsintType objects
+        # Convert entity mappings to HudhudType objects
         conversion_result = self._convert_entities(entities_to_import)
         pydantic_nodes = conversion_result["nodes"]
         nodes_mapping_indices = conversion_result["mapping_indices"]
@@ -124,7 +124,7 @@ class ImportService:
 
         # Batch create nodes
         try:
-            nodes = GraphSerializer.serialize_flowsint_types(pydantic_nodes)
+            nodes = GraphSerializer.serialize_hudhud_types(pydantic_nodes)
             nodes_result = self._graph_service.batch_create_nodes(nodes=nodes)
             nodes_created = nodes_result["nodes_created"]
             node_element_ids = nodes_result.get("node_ids", [])
@@ -158,12 +158,12 @@ class ImportService:
 
     def _convert_entities(self, entities: List[EntityMapping]) -> Dict[str, Any]:
         """
-        Convert entity mappings to FlowsintType objects.
+        Convert entity mappings to HudhudType objects.
 
         Returns:
             Dict with nodes, mapping_indices, and errors
         """
-        pydantic_nodes: List[FlowsintType] = []
+        pydantic_nodes: List[HudhudType] = []
         nodes_mapping_indices: Dict[str, int] = {}
         errors: List[str] = []
 
@@ -171,7 +171,7 @@ class ImportService:
             entity_data = mapping.data.copy()
 
             try:
-                pydantic_obj = GraphSerializer.parse_flowsint_type(
+                pydantic_obj = GraphSerializer.parse_hudhud_type(
                     entity=entity_data,
                     nodeType=mapping.entity_type,
                     type_resolver=self._type_resolver,

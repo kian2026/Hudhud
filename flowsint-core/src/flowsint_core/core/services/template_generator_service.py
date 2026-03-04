@@ -15,11 +15,11 @@ from ..llm import ChatMessage, MessageRole, create_llm_provider
 from .base import BaseService
 from .exceptions import ValidationError
 from .vault_service import VaultService
-from flowsint_core.templates.types import Template
+from hudhud_core.templates.types import Template
 
 
 _SYSTEM_PROMPT = """\
-You are a YAML template generator for Flowsint enrichers. Given a user's description, \
+You are a YAML template generator for Hudhud enrichers. Given a user's description, \
 generate a valid enricher template in YAML format.
 
 ## Template Schema
@@ -31,7 +31,7 @@ A template has the following fields:
 - `category` (str): Category matching the input type (e.g. "Ip", "Domain", "Username", "Email")
 - `version` (float): Template version, start at 1.0
 - `input`: Input configuration
-  - `type` (str, required): The Flowsint type this template accepts (e.g. "Ip", "Domain", "Username", "Email")
+  - `type` (str, required): The Hudhud type this template accepts (e.g. "Ip", "Domain", "Username", "Email")
   - `key` (str, default "nodeLabel"): The attribute to extract from the input for use in the template URL/body
 - `request`: HTTP request configuration
   - `method` (str): "GET" or "POST"
@@ -44,7 +44,7 @@ A template has the following fields:
   - `expect` (str): Expected format - "json", "xml", or "text"
   - `map` (dict): Mapping from output type field names to response paths (supports dot notation for nested fields)
 - `output`: Output configuration
-  - `type` (str, required): The Flowsint type to return (e.g. "Ip", "Domain", "SocialAccount")
+  - `type` (str, required): The Hudhud type to return (e.g. "Ip", "Domain", "SocialAccount")
   - `is_array` (bool, default false): Whether the response produces multiple outputs
   - `array_path` (str, optional): Dot-notation path to the array in response (e.g. "data.results")
 

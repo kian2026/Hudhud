@@ -4,7 +4,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 
 class TemplateInput(BaseModel):
-    type: str = Field(..., description="Flowsint Type the template takes as input")
+    type: str = Field(..., description="Hudhud Type the template takes as input")
     key: str = Field(
         default="nodeLabel",
         description="Key attribute to extract from input type for template variables",
@@ -13,7 +13,7 @@ class TemplateInput(BaseModel):
 
 class TemplateOutput(BaseModel):
     type: str = Field(
-        ..., description="Flowsint Type that the template should return as an output."
+        ..., description="Hudhud Type that the template should return as an output."
     )
     # If response is an array, this allows mapping each item to an output
     is_array: bool = Field(
@@ -118,7 +118,7 @@ class TemplateHttpResponseMapping(BaseModel):
     value: str = Field(
         min_length=1,
         max_length=4096,
-        description="The key of the field you want to feed (of the expected FlowsintType).",
+        description="The key of the field you want to feed (of the expected HudhudType).",
     )
 
 

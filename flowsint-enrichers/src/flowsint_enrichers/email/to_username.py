@@ -1,13 +1,13 @@
 from typing import List
 
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_types.email import Email
-from flowsint_types.username import Username
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_types.email import Email
+from hudhud_types.username import Username
 
-from flowsint_enrichers.registry import flowsint_enricher
+from hudhud_enrichers.registry import hudhud_enricher
 
 
-@flowsint_enricher
+@hudhud_enricher
 class EmailToUsernameEnricher(Enricher):
     """From email to username."""
 
