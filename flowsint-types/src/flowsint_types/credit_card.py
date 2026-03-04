@@ -1,12 +1,12 @@
 from pydantic import Field, model_validator
 from typing import Optional, List, Self
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class CreditCard(FlowsintType):
+@hudhud_type
+class CreditCard(HudhudType):
     """Represents a credit card with financial details and security status."""
 
     card_number: str = Field(..., description="Credit card number", title="Card Number", json_schema_extra={"primary": True})

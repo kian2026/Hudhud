@@ -2,13 +2,13 @@ from typing import List, Optional, Self, Union
 
 from pydantic import Field, field_validator, model_validator
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 from .username import Username
 
 
-@flowsint_type
-class SocialAccount(FlowsintType):
+@hudhud_type
+class SocialAccount(HudhudType):
     """Represents a social media account (the 'home' of a username)."""
 
     id: Optional[str] = Field(

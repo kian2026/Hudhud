@@ -2,12 +2,12 @@ from typing import List, Optional, Self
 
 from pydantic import Field, model_validator
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class WebTracker(FlowsintType):
+@hudhud_type
+class WebTracker(HudhudType):
     """Represents a web tracking technology with privacy and compliance information."""
 
     tracker_id: str = Field(

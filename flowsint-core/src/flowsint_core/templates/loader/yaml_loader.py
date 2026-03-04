@@ -5,8 +5,8 @@ from urllib.parse import urlparse
 
 import yaml
 
-from flowsint_core.core.graph.serializer import TypeResolver
-from flowsint_core.templates.types import Template
+from hudhud_core.core.graph.serializer import TypeResolver
+from hudhud_core.templates.types import Template
 
 # Template variable pattern: {{variable_name}} or {{secrets.NAME}}
 TEMPLATE_RE = re.compile(r"\{\{\s*([a-zA-Z_][a-zA-Z0-9_.]*)\s*\}\}")
@@ -134,7 +134,7 @@ class YamlLoader:
             raise ValueError("Missing 'input.type' property in the yaml.")
 
         if not type_resolver:
-            from flowsint_core.core.services.type_registry_service import local_type_resolver
+            from hudhud_core.core.services.type_registry_service import local_type_resolver
             type_resolver = local_type_resolver
         DetectedType = type_resolver(input_type)
 

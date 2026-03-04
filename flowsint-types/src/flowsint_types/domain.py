@@ -2,12 +2,12 @@ from typing import Optional, Self
 from pydantic import Field, field_validator, model_validator
 from urllib.parse import urlparse
 import re
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Domain(FlowsintType):
+@hudhud_type
+class Domain(HudhudType):
     """Represents a domain name and its properties."""
 
     domain: str = Field(

@@ -1,16 +1,16 @@
 [tool.poetry]
-name = "flowsint-api"
+name = "hudhud-api"
 version = "1.0.0"
 license = "Apache-2.0"
-description = "API server for flowsint"
-authors = ["dextmorgn <contact@flowsint.io>"]
+description = "API server for hudhud"
+authors = ["dextmorgn <contact@hudhud.io>"]
 packages = [{ include = "app" }]
 
 [tool.poetry.dependencies]
 python = ">=3.12,<4.0"
-flowsint-core = { path = "../flowsint-core", develop = true }
-flowsint-types = { path = "../flowsint-types", develop = true }
-flowsint-enrichers = { path = "../flowsint-enrichers", develop = true }
+hudhud-core = { path = "../hudhud-core", develop = true }
+hudhud-types = { path = "../hudhud-types", develop = true }
+hudhud-enrichers = { path = "../hudhud-enrichers", develop = true }
 fastapi = "^0.115.0"
 uvicorn = "^0.32.0"
 redis = "^5.0"

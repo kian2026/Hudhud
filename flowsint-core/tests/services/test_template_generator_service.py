@@ -5,8 +5,8 @@ from uuid import uuid4
 
 import pytest
 
-from flowsint_core.core.services.exceptions import ValidationError
-from flowsint_core.core.services.template_generator_service import (
+from hudhud_core.core.services.exceptions import ValidationError
+from hudhud_core.core.services.template_generator_service import (
     TemplateGeneratorService,
     _extract_yaml,
 )

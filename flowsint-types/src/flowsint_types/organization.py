@@ -2,12 +2,12 @@ from pydantic import Field, model_validator
 from typing import Any, Optional, List, Self
 from .individual import Individual
 from .address import Location
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Organization(FlowsintType):
+@hudhud_type
+class Organization(HudhudType):
     """Represents an organization with detailed business and administrative information."""
 
     # Basic information

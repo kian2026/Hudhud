@@ -3,8 +3,8 @@ import pytest
 import uuid
 import os
 from unittest.mock import Mock, MagicMock
-from flowsint_core.core.vault import Vault
-from flowsint_core.core.models import Key
+from hudhud_core.core.vault import Vault
+from hudhud_core.core.models import Key
 
 
 @pytest.fixture

@@ -1,4 +1,4 @@
-from flowsint_types.website import Website
+from hudhud_types.website import Website
 import pytest
 
 

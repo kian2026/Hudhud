@@ -1,12 +1,12 @@
 from pydantic import Field, model_validator
 from typing import Optional, List, Self
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Credential(FlowsintType):
+@hudhud_type
+class Credential(HudhudType):
     """Represents user credentials with compromise and usage information."""
 
     username: str = Field(..., description="Username or identifier", title="Username", json_schema_extra={"primary": True})

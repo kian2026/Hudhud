@@ -2,11 +2,11 @@ import os
 from typing import Any, Dict, List, Optional, Union
 import requests
 from urllib.parse import urljoin
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_enrichers.registry import flowsint_enricher
-from flowsint_core.core.logger import Logger
-from flowsint_types.email import Email
-from flowsint_types.breach import Breach
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_enrichers.registry import hudhud_enricher
+from hudhud_core.core.logger import Logger
+from hudhud_types.email import Email
+from hudhud_types.breach import Breach
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -15,7 +15,7 @@ load_dotenv()
 HIBP_API_KEY = os.getenv("HIBP_API_KEY")
 
 
-@flowsint_enricher
+@hudhud_enricher
 class EmailToBreachesEnricher(Enricher):
     """[HIBPWNED] Get the breaches the email might be invovled in."""
 

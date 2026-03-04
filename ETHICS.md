@@ -2,20 +2,20 @@
 
 ## License
 
-Flowsint is distributed under the **Apache License 2.0** (effective January 25, 2026).
+Hudhud is distributed under the **Apache License 2.0** (effective January 25, 2026).
 
 Code contributed prior to January 25, 2026 was originally licensed under AGPL-3.0
 and has been relicensed to Apache 2.0 with the written consent of all contributors.
 
 ## Ethical Foundation
 
-The development and use of Flowsint are guided by the principles of the [Hippocratic License](https://firstdonoharm.dev/):
+The development and use of Hudhud are guided by the principles of the [Hippocratic License](https://firstdonoharm.dev/):
 
 > **The software must not be used in ways that violate fundamental human rights.**
 
 ## Ethical Commitment
 
-By using or contributing to Flowsint, all individuals and organizations are expected to:
+By using or contributing to Hudhud, all individuals and organizations are expected to:
 
 * Respect and uphold universal human rights
 * Use the software responsibly, transparently, and ethically
@@ -24,7 +24,7 @@ By using or contributing to Flowsint, all individuals and organizations are expe
 
 ## Lawful and Responsible Use
 
-Flowsint is designed **strictly for lawful, ethical investigation and research purposes**.
+Hudhud is designed **strictly for lawful, ethical investigation and research purposes**.
 It was created to assist:
 
 * Cybersecurity researchers and analysts
@@ -34,7 +34,7 @@ It was created to assist:
 
 ### Prohibited Uses
 
-Flowsint **must not be used** for:
+Hudhud **must not be used** for:
 
 * Unauthorized intrusion, surveillance, or data collection
 * Harassment, doxxing, blackmail, or targeting of individuals
@@ -46,9 +46,9 @@ These examples are **non-exhaustive** and may evolve according to ethical and le
 ## Reporting Misuse
 
 If you become aware of any use that contradicts these principles, please report it to:
-📧 **[contact@flowsint.io](mailto:contact@flowsint.io)**
+📧 **[contact@hudhud.io](mailto:contact@hudhud.io)**
 
 ## Responsibility Statement
 
-The developers and maintainers of Flowsint are committed to upholding these ethical principles throughout the project’s life cycle.
-However, in accordance with the Apache License 2.0, **Flowsint is provided "as is," without warranty**, and its authors **cannot be held liable for misuse or unlawful activity conducted by third parties**.
+The developers and maintainers of Hudhud are committed to upholding these ethical principles throughout the project’s life cycle.
+However, in accordance with the Apache License 2.0, **Hudhud is provided "as is," without warranty**, and its authors **cannot be held liable for misuse or unlawful activity conducted by third parties**.

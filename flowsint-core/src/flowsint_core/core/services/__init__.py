@@ -1,5 +1,5 @@
 """
-Service layer for flowsint-core.
+Service layer for hudhud-core.
 
 This module provides business logic services that encapsulate database operations
 and domain logic, enabling cleaner route handlers and better testability.

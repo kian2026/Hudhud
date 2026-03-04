@@ -1337,9 +1337,9 @@ async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
 
 [[package]]
-name = "flowsint-enrichers"
+name = "hudhud-enrichers"
 version = "1.0.0"
-description = "Enricher modules for flowsint"
+description = "Enricher modules for hudhud"
 optional = false
 python-versions = ">=3.12,<4.0"
 groups = ["main"]
@@ -1348,8 +1348,8 @@ develop = true
 
 [package.dependencies]
 dnspython = "^2.4"
-flowsint-core = {path = "../flowsint-core", develop = true}
-flowsint-types = {path = "../flowsint-types", develop = true}
+hudhud-core = {path = "../hudhud-core", develop = true}
+hudhud-types = {path = "../hudhud-types", develop = true}
 hibpwned = "^1.3.9"
 holehe = "^1.61"
 httpx = "^0.28.0"
@@ -1368,12 +1368,12 @@ sherlock-project = "^0.15.0"
 
 [package.source]
 type = "directory"
-url = "../flowsint-enrichers"
+url = "../hudhud-enrichers"
 
 [[package]]
-name = "flowsint-types"
+name = "hudhud-types"
 version = "1.0.0"
-description = "Pydantic models for flowsint"
+description = "Pydantic models for hudhud"
 optional = false
 python-versions = ">=3.12,<4.0"
 groups = ["main"]
@@ -1387,7 +1387,7 @@ pydantic = "^2.0"
 
 [package.source]
 type = "directory"
-url = "../flowsint-types"
+url = "../hudhud-types"
 
 [[package]]
 name = "freetype-py"

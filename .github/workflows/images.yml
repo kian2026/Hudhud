@@ -47,8 +47,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ github.repository_owner }}/flowsint-app
-            ghcr.io/${{ github.repository_owner }}/flowsint-app
+            ${{ github.repository_owner }}/hudhud-app
+            ghcr.io/${{ github.repository_owner }}/hudhud-app
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
@@ -57,8 +57,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ./flowsint-app
-          file: ./flowsint-app/Dockerfile
+          context: ./hudhud-app
+          file: ./hudhud-app/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
@@ -72,7 +72,7 @@ jobs:
         id: trivy
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ghcr.io/${{ github.repository_owner }}/flowsint-app:${{ github.ref_name }}
+          image-ref: ghcr.io/${{ github.repository_owner }}/hudhud-app:${{ github.ref_name }}
           format: "sarif"
           output: "trivy-frontend.sarif"
           severity: "CRITICAL,HIGH"
@@ -120,8 +120,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ github.repository_owner }}/flowsint-api
-            ghcr.io/${{ github.repository_owner }}/flowsint-api
+            ${{ github.repository_owner }}/hudhud-api
+            ghcr.io/${{ github.repository_owner }}/hudhud-api
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
@@ -131,7 +131,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./flowsint-api/Dockerfile
+          file: ./hudhud-api/Dockerfile
           target: production
           platforms: linux/amd64,linux/arm64
           push: true
@@ -146,7 +146,7 @@ jobs:
         id: trivy
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ghcr.io/${{ github.repository_owner }}/flowsint-api:${{ github.ref_name }}
+          image-ref: ghcr.io/${{ github.repository_owner }}/hudhud-api:${{ github.ref_name }}
           format: "sarif"
           output: "trivy-backend.sarif"
           severity: "CRITICAL,HIGH"

@@ -1,12 +1,12 @@
 from pydantic import Field, model_validator
 from typing import Optional, List, Self
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Alias(FlowsintType):
+@hudhud_type
+class Alias(HudhudType):
     """Represents an alias or alternative name used by an entity."""
 
     alias: str = Field(..., description="Alias or alternative name", title="Alias", json_schema_extra={"primary": True})

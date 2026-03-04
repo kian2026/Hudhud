@@ -3,9 +3,9 @@ from fastapi import APIRouter, HTTPException, Depends, status
 from typing import List
 from sqlalchemy.orm import Session
 
-from flowsint_core.core.postgre_db import get_db
-from flowsint_core.core.models import Profile
-from flowsint_core.core.services import (
+from hudhud_core.core.postgre_db import get_db
+from hudhud_core.core.models import Profile
+from hudhud_core.core.services import (
     create_analysis_service,
     NotFoundError,
     PermissionDeniedError,

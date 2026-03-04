@@ -1,15 +1,15 @@
 [tool.poetry]
-name = "flowsint-enrichers"
+name = "hudhud-enrichers"
 version = "1.0.0"
 license = "Apache-2.0"
-description = "Enricher modules for flowsint"
-authors = ["dextmorgn <contact@flowsint.io>"]
-packages = [{ include = "flowsint_enrichers", from = "src" }]
+description = "Enricher modules for hudhud"
+authors = ["dextmorgn <contact@hudhud.io>"]
+packages = [{ include = "hudhud_enrichers", from = "src" }]
 
 [tool.poetry.dependencies]
 python = ">=3.12,<4.0"
-flowsint-types = { path = "../flowsint-types", develop = true }
-flowsint-core = { path = "../flowsint-core", develop = true }
+hudhud-types = { path = "../hudhud-types", develop = true }
+hudhud-core = { path = "../hudhud-core", develop = true }
 holehe = "^1.61"
 sherlock-project = "^0.15.0"
 requests = "^2.31"

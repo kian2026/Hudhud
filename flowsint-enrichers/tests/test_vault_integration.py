@@ -2,12 +2,12 @@
 import pytest
 import uuid
 from unittest.mock import Mock
-from flowsint_enrichers.domain.to_history import DomainToHistoryEnricher
-from flowsint_enrichers.individual.to_domains import IndividualToDomainsEnricher
-from flowsint_enrichers.email.to_domains import EmailToDomainsEnricher
-from flowsint_enrichers.crypto.to_nfts import CryptoWalletAddressToNFTs
-from flowsint_enrichers.crypto.to_transactions import CryptoWalletAddressToTransactions
-from flowsint_enrichers.email.to_leaks import EmailToBreachesEnricher
+from hudhud_enrichers.domain.to_history import DomainToHistoryEnricher
+from hudhud_enrichers.individual.to_domains import IndividualToDomainsEnricher
+from hudhud_enrichers.email.to_domains import EmailToDomainsEnricher
+from hudhud_enrichers.crypto.to_nfts import CryptoWalletAddressToNFTs
+from hudhud_enrichers.crypto.to_transactions import CryptoWalletAddressToTransactions
+from hudhud_enrichers.email.to_leaks import EmailToBreachesEnricher
 
 
 @pytest.fixture

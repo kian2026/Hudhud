@@ -1,12 +1,12 @@
 from pydantic import Field, model_validator
 from typing import Optional, List, Self
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class File(FlowsintType):
+@hudhud_type
+class File(HudhudType):
     """Represents a file with metadata, type information, and security assessment."""
 
     filename: str = Field(..., description="File name", title="Filename", json_schema_extra={"primary": True})

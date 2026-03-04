@@ -3,7 +3,7 @@ from datetime import datetime
 import time
 from pydantic import ValidationError
 from .enricher_base import Enricher
-from flowsint_enrichers import ENRICHER_REGISTRY
+from hudhud_enrichers import ENRICHER_REGISTRY
 from .types import FlowBranch, FlowStep
 from .logger import Logger
 from ..utils import to_json_serializable

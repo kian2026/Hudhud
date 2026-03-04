@@ -7,8 +7,8 @@ from tests.factories import (
     InvestigationUserRoleFactory,
     ProfileFactory,
 )
-from flowsint_core.core.repositories import AnalysisRepository
-from flowsint_core.core.types import Role
+from hudhud_core.core.repositories import AnalysisRepository
+from hudhud_core.core.types import Role
 
 
 class TestAnalysisRepository:

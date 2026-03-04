@@ -2,22 +2,22 @@ from typing import Any, Dict, List, Optional
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
-from flowsint_core.core.celery import celery
-from flowsint_core.core.graph import create_graph_service
-from flowsint_core.core.models import Profile
-from flowsint_core.core.postgre_db import get_db
-from flowsint_core.core.services import (
+from hudhud_core.core.celery import celery
+from hudhud_core.core.graph import create_graph_service
+from hudhud_core.core.models import Profile
+from hudhud_core.core.postgre_db import get_db
+from hudhud_core.core.services import (
     NotFoundError,
     PermissionDeniedError,
     create_flow_service,
 )
-from flowsint_core.core.services.type_registry_service import (
+from hudhud_core.core.services.type_registry_service import (
     create_type_registry_service,
 )
-from flowsint_core.core.types import FlowBranch, FlowEdge, FlowNode, FlowStep
-from flowsint_core.utils import extract_input_schema_flow
-from flowsint_enrichers import ENRICHER_REGISTRY, load_all_enrichers
-from flowsint_types import (
+from hudhud_core.core.types import FlowBranch, FlowEdge, FlowNode, FlowStep
+from hudhud_core.utils import extract_input_schema_flow
+from hudhud_enrichers import ENRICHER_REGISTRY, load_all_enrichers
+from hudhud_types import (
     ASN,
     CIDR,
     CryptoNFT,

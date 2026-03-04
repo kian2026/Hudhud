@@ -11,24 +11,24 @@ from fastapi import (
     UploadFile,
     status,
 )
-from flowsint_core.core.graph import GraphNode
-from flowsint_core.core.models import Profile
-from flowsint_core.core.postgre_db import get_db
-from flowsint_core.core.services import (
+from hudhud_core.core.graph import GraphNode
+from hudhud_core.core.models import Profile
+from hudhud_core.core.postgre_db import get_db
+from hudhud_core.core.services import (
     create_sketch_service,
     NotFoundError,
     PermissionDeniedError,
     ValidationError,
     DatabaseError,
 )
-from flowsint_core.core.services.type_registry_service import create_type_registry_service
-from flowsint_core.imports import (
+from hudhud_core.core.services.type_registry_service import create_type_registry_service
+from hudhud_core.imports import (
     EntityMapping,
     ImportService,
     create_import_service,
     FileParseResult,
 )
-from flowsint_core.core.graph import create_graph_service
+from hudhud_core.core.graph import create_graph_service
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 

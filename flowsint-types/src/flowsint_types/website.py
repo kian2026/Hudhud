@@ -2,12 +2,12 @@ from typing import Dict, List, Optional, Self
 from pydantic import Field, HttpUrl, model_validator
 import re
 from .domain import Domain
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Website(FlowsintType):
+@hudhud_type
+class Website(HudhudType):
     """Represents a website with its URL, domain, and redirect information."""
 
     url: HttpUrl = Field(

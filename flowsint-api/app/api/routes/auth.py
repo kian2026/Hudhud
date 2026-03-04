@@ -3,14 +3,14 @@ from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 
-from flowsint_core.core.services import (
+from hudhud_core.core.services import (
     create_auth_service,
     AuthenticationError,
     ConflictError,
     DatabaseError,
 )
 from app.api.schemas.profile import ProfileCreate
-from flowsint_core.core.postgre_db import get_db
+from hudhud_core.core.postgre_db import get_db
 
 router = APIRouter()
 

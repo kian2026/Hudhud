@@ -6,8 +6,8 @@
 
 from pathlib import Path
 
-from flowsint_core.templates.loader.yaml_loader import YamlLoader
-from flowsint_core.templates.types import Template
+from hudhud_core.templates.loader.yaml_loader import YamlLoader
+from hudhud_core.templates.types import Template
 
 TEST_DIR = Path(__file__).parent
 

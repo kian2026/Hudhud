@@ -1,5 +1,5 @@
 """
-Flowsint Core - Core utilities and base classes for flowsint modules
+Hudhud Core - Core utilities and base classes for hudhud modules
 """
 
 from .core.auth import *
@@ -16,4 +16,4 @@ from .core.vault import *
 from .utils import *
 
 __version__ = "0.1.0"
-__author__ = "dextmorgn <contact@flowsint.io>"
+__author__ = "dextmorgn <contact@hudhud.io>"

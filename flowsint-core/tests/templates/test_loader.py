@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from flowsint_core.templates.loader.yaml_loader import (
+from hudhud_core.templates.loader.yaml_loader import (
     BLOCKED_HOSTNAMES,
     SSRFError,
     TemplateRenderError,
@@ -14,7 +14,7 @@ from flowsint_core.templates.loader.yaml_loader import (
     sanitize_url_component,
     validate_url_safe,
 )
-from flowsint_core.templates.types import Template
+from hudhud_core.templates.types import Template
 
 TEST_DIR = Path(__file__).parent
 

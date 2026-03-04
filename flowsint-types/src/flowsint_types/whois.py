@@ -3,12 +3,12 @@ from pydantic import Field, field_validator, model_validator
 from .email import Email
 from .domain import Domain
 from .organization import Organization
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Whois(FlowsintType):
+@hudhud_type
+class Whois(HudhudType):
     """Represents WHOIS domain registration information."""
 
     domain: Domain = Field(..., description="Domain information", title="Domain", json_schema_extra={"primary": True})

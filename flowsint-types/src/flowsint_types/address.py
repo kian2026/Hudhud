@@ -1,11 +1,11 @@
 from pydantic import Field, model_validator
 from typing import Optional, Self
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Location(FlowsintType):
+@hudhud_type
+class Location(HudhudType):
     """Represents a physical address with geographical coordinates."""
 
     address: str = Field(..., description="Street address", title="Street Address", json_schema_extra={"primary": True})

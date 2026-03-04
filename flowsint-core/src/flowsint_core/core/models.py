@@ -23,8 +23,8 @@ from sqlalchemy import (
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 from sqlalchemy.types import TypeDecorator
 
-from flowsint_core.core.enums import EventLevel
-from flowsint_core.core.types import Role
+from hudhud_core.core.enums import EventLevel
+from hudhud_core.core.types import Role
 
 
 class RoleListType(TypeDecorator):

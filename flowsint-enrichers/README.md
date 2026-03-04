@@ -1,6 +1,6 @@
-# flowsint-enrichers
+# hudhud-enrichers
 
-The repository containing open-source enrichers for flowsint.
+The repository containing open-source enrichers for hudhud.
 
 ## Testing
 

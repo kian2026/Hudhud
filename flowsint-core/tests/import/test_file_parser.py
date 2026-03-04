@@ -1,8 +1,8 @@
 from unittest.mock import patch
 
-from flowsint_types import Domain, Ip, Username
+from hudhud_types import Domain, Ip, Username
 
-from flowsint_core.imports import (
+from hudhud_core.imports import (
     EntityPreview,
     FileParseResult,
     parse_import_file,

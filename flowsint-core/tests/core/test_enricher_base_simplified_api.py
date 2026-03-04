@@ -3,11 +3,11 @@
 from typing import List
 
 import pytest
-from flowsint_types.domain import Domain
-from flowsint_types.email import Email
-from flowsint_types.individual import Individual
+from hudhud_types.domain import Domain
+from hudhud_types.email import Email
+from hudhud_types.individual import Individual
 
-from flowsint_core.core.enricher_base import Enricher
+from hudhud_core.core.enricher_base import Enricher
 
 
 class MockEnricher(Enricher):

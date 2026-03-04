@@ -1,5 +1,5 @@
 import pytest
-from flowsint_types.ip import Ip
+from hudhud_types.ip import Ip
 
 
 def test_valid_ip():

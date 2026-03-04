@@ -1,5 +1,5 @@
-# flowsint-core
-The repository containing the core components for flowsint.
+# hudhud-core
+The repository containing the core components for hudhud.
 
 It contains:
 - Celery tasks

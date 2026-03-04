@@ -1,12 +1,12 @@
 from pydantic import Field, field_validator, model_validator
 from typing import Optional, Any, Self
 import ipaddress
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Ip(FlowsintType):
+@hudhud_type
+class Ip(HudhudType):
     """Represents an IP address with geolocation and ISP information."""
 
     address: str = Field(

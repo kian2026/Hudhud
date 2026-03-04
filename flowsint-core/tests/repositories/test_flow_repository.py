@@ -1,6 +1,6 @@
 """Tests for FlowRepository."""
 from tests.factories import FlowFactory
-from flowsint_core.core.repositories import FlowRepository
+from hudhud_core.core.repositories import FlowRepository
 
 
 class TestFlowRepository:

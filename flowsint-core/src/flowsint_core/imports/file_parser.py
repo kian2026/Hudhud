@@ -7,7 +7,7 @@ Each line represents ONE entity with a single value.
 from pathlib import Path
 from typing import BinaryIO, Optional, Union
 
-from flowsint_core.core.graph.serializer import TypeResolver
+from hudhud_core.core.graph.serializer import TypeResolver
 
 from .json import parse_json
 from .txt import parse_txt

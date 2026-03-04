@@ -2,15 +2,15 @@ import asyncio
 import time
 from typing import List
 
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_core.core.logger import Logger
-from flowsint_types.domain import Domain
-from flowsint_types.ip import Ip
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_core.core.logger import Logger
+from hudhud_types.domain import Domain
+from hudhud_types.ip import Ip
 
-from flowsint_enrichers.registry import flowsint_enricher
+from hudhud_enrichers.registry import hudhud_enricher
 
 
-@flowsint_enricher
+@hudhud_enricher
 class IpToDummyDomainsEnricher(Enricher):
     """
     TEST TRANSFORM: Generate dummy domains for testing SSE incremental updates.

@@ -1,12 +1,12 @@
 import json
 import aiohttp
 from typing import List, Dict, Any, Optional
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_enrichers.registry import flowsint_enricher
-from flowsint_core.core.logger import Logger
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_enrichers.registry import hudhud_enricher
+from hudhud_core.core.logger import Logger
 
 
-@flowsint_enricher
+@hudhud_enricher
 class N8nConnector(Enricher):
     """
     Connect to your custom n8n workflows to process data through webhooks.
@@ -37,7 +37,7 @@ class N8nConnector(Enricher):
         return """
 # n8n Connector
 
-Connect to your custom n8n workflows to process data through webhooks. This connector allows you to leverage n8n's powerful automation capabilities within your Flowsint investigations.
+Connect to your custom n8n workflows to process data through webhooks. This connector allows you to leverage n8n's powerful automation capabilities within your Hudhud investigations.
 
 ## Setup Instructions
 
@@ -109,7 +109,7 @@ Add a **Respond to Webhook** node at the end of your workflow to return processe
   {
     "custom_field": "value",
     "metadata": {
-      "source": "flowsint"
+      "source": "hudhud"
     }
   }
   ```
@@ -203,7 +203,7 @@ The connector provides detailed logging:
 - Response status and content
 - Processing results
 
-Check Flowsint logs for detailed debugging information.
+Check Hudhud logs for detailed debugging information.
 
 ## Resources
 

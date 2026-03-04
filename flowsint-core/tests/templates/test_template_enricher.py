@@ -8,12 +8,12 @@ from unittest.mock import MagicMock
 import httpx
 import pytest
 
-from flowsint_core.core.template_enricher import (
+from hudhud_core.core.template_enricher import (
     TemplateEnricher,
     TemplateEnricherError,
 )
-from flowsint_core.templates.loader.yaml_loader import SSRFError, YamlLoader
-from flowsint_core.templates.types import (
+from hudhud_core.templates.loader.yaml_loader import SSRFError, YamlLoader
+from hudhud_core.templates.types import (
     Template,
     TemplateHttpRequest,
     TemplateHttpResponse,
@@ -117,7 +117,7 @@ class TestTemplateEnricherSSRF:
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
         # Create mock input
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
 
@@ -130,7 +130,7 @@ class TestTemplateEnricherSSRF:
         template = create_test_template(url="http://192.168.1.1/{{address}}")
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
 
@@ -146,7 +146,7 @@ class TestTemplateEnricherSSRF:
         )
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]  # Valid IP, but URL is blocked
 
@@ -171,7 +171,7 @@ class TestTemplateEnricherRequests:
         )
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
         results = await enricher.scan(inputs)
@@ -196,7 +196,7 @@ class TestTemplateEnricherRequests:
         )
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
         results = await enricher.scan(inputs)
@@ -220,7 +220,7 @@ class TestTemplateEnricherRequests:
         )
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
         await enricher.scan(inputs)
@@ -241,7 +241,7 @@ class TestTemplateEnricherRequests:
         )
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
         await enricher.scan(inputs)
@@ -267,7 +267,7 @@ class TestTemplateEnricherResponseParsing:
         )
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
         results = await enricher.scan(inputs)
@@ -296,7 +296,7 @@ class TestTemplateEnricherResponseParsing:
         )
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
         results = await enricher.scan(inputs)
@@ -326,7 +326,7 @@ class TestTemplateEnricherResponseParsing:
         )
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
         results = await enricher.scan(inputs)
@@ -346,7 +346,7 @@ class TestTemplateEnricherResponseParsing:
         )
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
         # Text response won't map well, but shouldn't crash
@@ -378,7 +378,7 @@ class TestTemplateEnricherArrayResponse:
         )
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
         results = await enricher.scan(inputs)
@@ -404,7 +404,7 @@ class TestTemplateEnricherArrayResponse:
         )
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="1.2.3.4")]  # Valid IP address
         results = await enricher.scan(inputs)
@@ -429,7 +429,7 @@ class TestTemplateEnricherVaultIntegration:
         enricher = TemplateEnricher(template=template, sketch_id="test", vault=vault)
         await enricher.async_init()
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
         await enricher.scan(inputs)
@@ -464,7 +464,7 @@ class TestTemplateEnricherVaultIntegration:
         enricher = TemplateEnricher(template=template, sketch_id="test", vault=vault)
         await enricher.async_init()  # Should not raise
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
         # Should work without the optional secret
@@ -490,7 +490,7 @@ class TestTemplateEnricherRetry:
         )
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
         results = await enricher.scan(inputs)
@@ -513,7 +513,7 @@ class TestTemplateEnricherRetry:
         )
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
         results = await enricher.scan(inputs)
@@ -531,7 +531,7 @@ class TestTemplateEnricherRetry:
         )
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8")]
         results = await enricher.scan(inputs)
@@ -552,7 +552,7 @@ class TestTemplateEnricherErrorHandling:
         template = create_test_template()
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8"), Ip(address="1.1.1.1")]
         results = await enricher.scan(inputs)
@@ -570,7 +570,7 @@ class TestTemplateEnricherErrorHandling:
         template = create_test_template()
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8"), Ip(address="1.1.1.1")]
         results = await enricher.scan(inputs)
@@ -592,7 +592,7 @@ class TestTemplateEnricherErrorHandling:
         )
         enricher = TemplateEnricher(template=template, sketch_id="test")
 
-        from flowsint_types import Ip
+        from hudhud_types import Ip
 
         inputs = [Ip(address="8.8.8.8"), Ip(address="1.1.1.1")]
         results = await enricher.scan(inputs)

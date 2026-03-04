@@ -7,7 +7,7 @@ This module contains Pydantic models for graph nodes, edges, and related data st
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Union
 
-# from flowsint_types import FlowsintType
+# from hudhud_types import HudhudType
 from pydantic import BaseModel, Field
 
 GraphDict = Dict[str, Any]

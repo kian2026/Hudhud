@@ -1,11 +1,11 @@
 from pydantic import Field, HttpUrl, model_validator
 from typing import Optional, List, Self
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Gravatar(FlowsintType):
+@hudhud_type
+class Gravatar(HudhudType):
     """Represents a Gravatar profile with image and user information."""
 
     src: HttpUrl = Field(..., description="Gravatar image URL", title="Image URL")

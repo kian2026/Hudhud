@@ -7,7 +7,7 @@ integrating repository and logging functionality.
 
 from typing import Any, Dict, List, Optional, Protocol
 
-from flowsint_types import FlowsintType
+from hudhud_types import HudhudType
 from pydantic import BaseModel
 
 from .repository import Neo4jGraphRepository
@@ -32,7 +32,7 @@ class GraphService:
     This service provides a clean interface for enricher operations,
     handling both graph persistence and logging with proper separation of concerns.
 
-    This service can support FlowsintType input or GraphNode input.
+    This service can support HudhudType input or GraphNode input.
     """
 
     def __init__(
@@ -88,9 +88,9 @@ class GraphService:
             node_obj: a GraphNode object
         """
 
-        if isinstance(node_obj, FlowsintType):
+        if isinstance(node_obj, HudhudType):
             raise Exception(
-                "create_node method takes a GraphNode as input. If you want to insert a node from a FlowsintType, please use create_node_from_flowsint_type method."
+                "create_node method takes a GraphNode as input. If you want to insert a node from a HudhudType, please use create_node_from_hudhud_type method."
             )
 
         neo4j_node_dict: GraphDict = GraphSerializer.graph_node_to_neo4j_dict(node_obj)
@@ -107,23 +107,23 @@ class GraphService:
                 sketch_id=self._sketch_id,
             )
 
-    def create_node_from_flowsint_type(self, node_obj: FlowsintType) -> str | None:
+    def create_node_from_hudhud_type(self, node_obj: HudhudType) -> str | None:
         """
         Create or update a node in the graph.
 
         Supports one signatures:
-         - FlowsintType object: create_node(obj)
+         - HudhudType object: create_node(obj)
 
         Args:
-            node_obj: a FlowsintType object
+            node_obj: a HudhudType object
         """
 
         if isinstance(node_obj, GraphNode):
             raise Exception(
-                "create_node_from_flowsint_type method takes a FlowsintType as input. If you want to insert a node from a GraphNode, please use create_node method."
+                "create_node_from_hudhud_type method takes a HudhudType as input. If you want to insert a node from a GraphNode, please use create_node method."
             )
 
-        neo4j_node_dict: GraphDict = GraphSerializer.flowsint_type_to_neo4j_dict(
+        neo4j_node_dict: GraphDict = GraphSerializer.hudhud_type_to_neo4j_dict(
             node_obj
         )
 
@@ -155,7 +155,7 @@ class GraphService:
 
     def get_nodes_by_ids_for_task(self, node_ids: List[str]) -> List[BaseModel]:
         nodes = self.get_nodes_by_ids(node_ids)
-        return [GraphSerializer.graph_node_to_flowsint_type(node) for node in nodes]
+        return [GraphSerializer.graph_node_to_hudhud_type(node) for node in nodes]
 
     def create_relationship(
         self,
@@ -359,7 +359,7 @@ def create_graph_service(
         Configured GraphService instance
     """
     # Import Logger here to avoid circular imports
-    from flowsint_core.core.logger import Logger
+    from hudhud_core.core.logger import Logger
 
     # Neo4jGraphRepository uses Neo4jConnection.get_instance() singleton
     repository = Neo4jGraphRepository()

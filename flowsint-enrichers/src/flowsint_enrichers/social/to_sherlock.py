@@ -2,14 +2,14 @@ import subprocess
 from pathlib import Path
 from typing import List
 
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_core.core.logger import Logger
-from flowsint_types import SocialAccount, Username
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_core.core.logger import Logger
+from hudhud_types import SocialAccount, Username
 
-from flowsint_enrichers.registry import flowsint_enricher
+from hudhud_enrichers.registry import hudhud_enricher
 
 
-@flowsint_enricher
+@hudhud_enricher
 class SherlockEnricher(Enricher):
     """[SHERLOCK] Scans the usernames for associated social accounts using Sherlock."""
 

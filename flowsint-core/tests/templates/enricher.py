@@ -8,9 +8,9 @@ from pathlib import Path
 
 import pytest
 
-from flowsint_core.core.template_enricher import TemplateEnricher
-from flowsint_core.templates.loader.yaml_loader import YamlLoader
-from flowsint_core.templates.types import Template
+from hudhud_core.core.template_enricher import TemplateEnricher
+from hudhud_core.templates.loader.yaml_loader import YamlLoader
+from hudhud_core.templates.types import Template
 
 TEST_DIR = Path(__file__).parent
 

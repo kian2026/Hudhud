@@ -1,9 +1,9 @@
 [tool.poetry]
-name = "flowsint-types"
+name = "hudhud-types"
 version = "0.1.0"
-description = "Pydantic models for flowsint"
-authors = ["dextmorgn <contact@flowsint.io>"]
-packages = [{ include = "flowsint_types" }]
+description = "Pydantic models for hudhud"
+authors = ["dextmorgn <contact@hudhud.io>"]
+packages = [{ include = "hudhud_types" }]
 
 [tool.poetry.dependencies]
 python = ">=3.12,<4.0"

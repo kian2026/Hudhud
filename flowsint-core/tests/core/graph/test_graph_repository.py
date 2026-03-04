@@ -4,7 +4,7 @@ import pytest
 from unittest.mock import MagicMock, patch, call
 from datetime import datetime, timezone
 
-from flowsint_core.core.graph import Neo4jGraphRepository
+from hudhud_core.core.graph import Neo4jGraphRepository
 
 
 class TestNeo4jGraphRepositoryInit:
@@ -17,7 +17,7 @@ class TestNeo4jGraphRepositoryInit:
 
     def test_init_without_connection_uses_singleton(self):
         with patch(
-            "flowsint_core.core.graph.repository.Neo4jConnection.get_instance"
+            "hudhud_core.core.graph.repository.Neo4jConnection.get_instance"
         ) as mock_get_instance:
             mock_connection = MagicMock()
             mock_get_instance.return_value = mock_connection

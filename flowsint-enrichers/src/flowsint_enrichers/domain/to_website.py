@@ -1,15 +1,15 @@
 from typing import Dict, List, Union
 import requests
 from bs4 import BeautifulSoup
-from flowsint_core.utils import is_valid_domain
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_enrichers.registry import flowsint_enricher
-from flowsint_types.domain import Domain
-from flowsint_types.website import Website
-from flowsint_core.core.logger import Logger
+from hudhud_core.utils import is_valid_domain
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_enrichers.registry import hudhud_enricher
+from hudhud_types.domain import Domain
+from hudhud_types.website import Website
+from hudhud_core.core.logger import Logger
 
 
-@flowsint_enricher
+@hudhud_enricher
 class DomainToWebsiteEnricher(Enricher):
     """From domain to website."""
 

@@ -2,7 +2,7 @@
 from uuid import uuid4
 
 from tests.factories import ProfileFactory
-from flowsint_core.core.repositories import ProfileRepository
+from hudhud_core.core.repositories import ProfileRepository
 
 
 class TestProfileRepository:
@@ -38,7 +38,7 @@ class TestProfileRepository:
         assert result is None
 
     def test_add(self, db_session):
-        from flowsint_core.core.models import Profile
+        from hudhud_core.core.models import Profile
 
         repo = ProfileRepository(db_session)
         profile = Profile(

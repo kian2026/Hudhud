@@ -1,1 +1,1 @@
-# Tests for flowsint-core
+# Tests for hudhud-core

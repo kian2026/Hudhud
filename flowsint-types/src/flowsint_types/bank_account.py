@@ -1,12 +1,12 @@
 from pydantic import Field, model_validator
 from typing import Optional, List, Self
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class BankAccount(FlowsintType):
+@hudhud_type
+class BankAccount(HudhudType):
     """Represents a bank account with financial and security information."""
 
     account_number: str = Field(

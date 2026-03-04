@@ -3,12 +3,12 @@ from typing import Any, Optional, Self
 
 from pydantic import Field, field_validator, model_validator
 
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class Username(FlowsintType):
+@hudhud_type
+class Username(HudhudType):
     """Represents a username or handle on any platform."""
 
     value: str = Field(

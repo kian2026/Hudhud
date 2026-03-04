@@ -3,9 +3,9 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.responses import StreamingResponse
-from flowsint_core.core.models import Profile
-from flowsint_core.core.postgre_db import get_db
-from flowsint_core.core.services import (
+from hudhud_core.core.models import Profile
+from hudhud_core.core.postgre_db import get_db
+from hudhud_core.core.services import (
     NotFoundError,
     create_chat_service,
 )

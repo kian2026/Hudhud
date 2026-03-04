@@ -3,15 +3,15 @@ import re
 from typing import Any, Dict, List, Optional, Set
 
 from dotenv import load_dotenv
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_core.core.logger import Logger
-from flowsint_types.address import Location
-from flowsint_types.domain import Domain
-from flowsint_types.email import Email
-from flowsint_types.individual import Individual
-from flowsint_types.phone import Phone
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_core.core.logger import Logger
+from hudhud_types.address import Location
+from hudhud_types.domain import Domain
+from hudhud_types.email import Email
+from hudhud_types.individual import Individual
+from hudhud_types.phone import Phone
 
-from flowsint_enrichers.registry import flowsint_enricher
+from hudhud_enrichers.registry import hudhud_enricher
 from tools.network.whoxy import WhoxyTool
 
 load_dotenv()
@@ -19,7 +19,7 @@ load_dotenv()
 WHOXY_API_KEY = os.getenv("WHOXY_API_KEY")
 
 
-@flowsint_enricher
+@hudhud_enricher
 class EmailToDomainsEnricher(Enricher):
     """[WHOXY] Takes an email and returns the domains it registered."""
 

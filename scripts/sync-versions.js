@@ -5,7 +5,7 @@
  *
  * Keeps versions synchronized across:
  * - pyproject.toml (root)
- * - flowsint-app/package.json
+ * - hudhud-app/package.json
  *
  * Usage: node scripts/sync-versions.js <new-version>
  */
@@ -33,17 +33,17 @@ function updatePyprojectVersion(version) {
 }
 
 function updatePackageJsonVersion(version) {
-  const packagePath = join(ROOT_DIR, 'flowsint-app', 'package.json');
+  const packagePath = join(ROOT_DIR, 'hudhud-app', 'package.json');
   const pkg = JSON.parse(readFileSync(packagePath, 'utf8'));
 
   pkg.version = version;
 
   writeFileSync(packagePath, JSON.stringify(pkg, null, 2) + '\n', 'utf8');
-  console.log(`✓ Updated flowsint-app/package.json to ${version}`);
+  console.log(`✓ Updated hudhud-app/package.json to ${version}`);
 }
 
 function getCurrentVersion() {
-  const packagePath = join(ROOT_DIR, 'flowsint-app', 'package.json');
+  const packagePath = join(ROOT_DIR, 'hudhud-app', 'package.json');
   const pkg = JSON.parse(readFileSync(packagePath, 'utf8'));
   return pkg.version;
 }

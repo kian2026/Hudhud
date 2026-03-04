@@ -2,7 +2,7 @@
 Core type definitions.
 
 This module contains Pydantic models for core types like events, flows, and roles.
-Graph-related types are in flowsint_core.core.graph.types.
+Graph-related types are in hudhud_core.core.graph.types.
 """
 
 import enum

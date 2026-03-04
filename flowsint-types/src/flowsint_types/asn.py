@@ -1,12 +1,12 @@
 from typing import List, Optional, Union, Self
 from pydantic import Field, field_validator, model_validator
 import re
-from .flowsint_base import FlowsintType
-from .registry import flowsint_type
+from .hudhud_base import HudhudType
+from .registry import hudhud_type
 
 
-@flowsint_type
-class ASN(FlowsintType):
+@hudhud_type
+class ASN(HudhudType):
     """Represents an Autonomous System Number with associated network information."""
 
     asn_str: str = Field(

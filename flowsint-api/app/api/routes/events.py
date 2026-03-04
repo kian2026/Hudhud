@@ -5,10 +5,10 @@ import json
 import asyncio
 from datetime import datetime
 
-from flowsint_core.core.postgre_db import get_db
-from flowsint_core.core.events import event_emitter
-from flowsint_core.core.models import Profile
-from flowsint_core.core.services import (
+from hudhud_core.core.postgre_db import get_db
+from hudhud_core.core.events import event_emitter
+from hudhud_core.core.models import Profile
+from hudhud_core.core.services import (
     create_log_service,
     NotFoundError,
     PermissionDeniedError,

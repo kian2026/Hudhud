@@ -1,11 +1,11 @@
 from typing import List, Optional, Union
 from urllib.parse import urlparse
-from flowsint_core.core.enricher_base import Enricher
-from flowsint_enrichers.registry import flowsint_enricher
-from flowsint_types.website import Website
-from flowsint_types.phone import Phone
-from flowsint_types.email import Email
-from flowsint_core.core.logger import Logger
+from hudhud_core.core.enricher_base import Enricher
+from hudhud_enrichers.registry import hudhud_enricher
+from hudhud_types.website import Website
+from hudhud_types.phone import Phone
+from hudhud_types.email import Email
+from hudhud_core.core.logger import Logger
 from tools.network.reconcrawl import ReconCrawlTool
 from pydantic import BaseModel
 
@@ -16,7 +16,7 @@ class ReturnType(BaseModel):
     phones: Optional[Phone]
 
 
-@flowsint_enricher
+@hudhud_enricher
 class WebsiteToCrawler(Enricher):
     """From website to crawler."""
 
