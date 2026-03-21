@@ -22,12 +22,20 @@ export const useChat = () => {
   )
 
   // Fetch current chat data with messages
-  const { data: currentChat, isLoading: isLoadingChat } = useQuery({
+  const { data: currentChat, isLoading: isLoadingChat, error: chatError } = useQuery({
     queryKey: queryKeys.chats.detail(currentChatId!),
     queryFn: () => chatCRUDService.getById(currentChatId!),
     enabled: !!currentChatId,
-    refetchOnWindowFocus: false
+    refetchOnWindowFocus: false,
+    retry: false
   })
+
+  // Reset stale chat ID when the chat no longer exists on the server
+  useEffect(() => {
+    if (chatError && currentChatId) {
+      setCurrentChatId(null)
+    }
+  }, [chatError, currentChatId, setCurrentChatId])
 
   // AI SDK useChat
   const { messages, status, sendMessage, stop, setMessages } = useAIChat({
@@ -40,9 +48,14 @@ export const useChat = () => {
     },
     onError: (error) => {
       console.error('Chat error:', error)
-      toast.error(
-        'Failed to get AI response: ' + (error instanceof Error ? error.message : 'Unknown error')
-      )
+      const message = error instanceof Error ? error.message : 'Unknown error'
+      // If the chat was deleted or doesn't exist, reset to create a new one
+      if (message.includes('Chat not found')) {
+        setCurrentChatId(null)
+        toast.error('Chat session expired. Please send your message again.')
+        return
+      }
+      toast.error('Failed to get AI response: ' + message)
     }
   })
 

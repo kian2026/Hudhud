@@ -17,7 +17,7 @@ def create_llm_provider(
     api_key: Optional[str] = None,
     model: Optional[str] = None,
 ) -> LLMProvider:
-    provider = provider or os.environ.get("LLM_PROVIDER", "mistral")
+    provider = provider or os.environ.get("LLM_PROVIDER", "openai")
 
     if provider not in _SUPPORTED_PROVIDERS:
         raise ValueError(

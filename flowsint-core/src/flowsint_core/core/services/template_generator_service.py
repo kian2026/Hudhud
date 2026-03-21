@@ -160,7 +160,7 @@ class TemplateGeneratorService(BaseService):
         self._vault_service = vault_service
 
     def _get_llm_provider(self, owner_id: UUID):
-        provider_name = os.environ.get("LLM_PROVIDER", "mistral")
+        provider_name = os.environ.get("LLM_PROVIDER", "openai")
         vault_key = f"{provider_name.upper()}_API_KEY"
         api_key = self._vault_service.get_secret(owner_id, vault_key)
         return create_llm_provider(provider=provider_name, api_key=api_key)

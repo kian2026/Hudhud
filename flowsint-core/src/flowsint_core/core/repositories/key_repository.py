@@ -8,7 +8,7 @@ from sqlalchemy import exists
 from ..models import Key
 from .base import BaseRepository
 
-CHAT_KEY_NAMES = ["MISTRAL_API_KEY"]
+CHAT_KEY_NAMES = ["OPENAI_API_KEY", "MISTRAL_API_KEY"]
 
 
 class KeyRepository(BaseRepository[Key]):

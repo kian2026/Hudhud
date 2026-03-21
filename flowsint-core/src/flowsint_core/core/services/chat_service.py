@@ -194,7 +194,7 @@ class ChatService(BaseService):
         return messages
 
     def get_llm_provider(self, owner_id: UUID) -> LLMProvider:
-        provider_name = os.environ.get("LLM_PROVIDER", "mistral")
+        provider_name = os.environ.get("LLM_PROVIDER", "openai")
         vault_key = f"{provider_name.upper()}_API_KEY"
         api_key = self._vault_service.get_secret(owner_id, vault_key)
         return create_llm_provider(provider=provider_name, api_key=api_key)
@@ -214,9 +214,13 @@ class ChatService(BaseService):
         yield f"data: {json.dumps({'type': 'start', 'messageId': message_id})}\n\n"
         yield f"data: {json.dumps({'type': 'text-start', 'id': text_id})}\n\n"
 
-        async for token in provider.stream(llm_messages):
-            accumulated.append(token)
-            yield f"data: {json.dumps({'type': 'text-delta', 'id': text_id, 'delta': token})}\n\n"
+        try:
+            async for token in provider.stream(llm_messages):
+                accumulated.append(token)
+                yield f"data: {json.dumps({'type': 'text-delta', 'id': text_id, 'delta': token})}\n\n"
+        except Exception as e:
+            error_msg = f"\n\n⚠️ Error from AI provider: {type(e).__name__}: {e}"
+            yield f"data: {json.dumps({'type': 'text-delta', 'id': text_id, 'delta': error_msg})}\n\n"
 
         yield f"data: {json.dumps({'type': 'text-end', 'id': text_id})}\n\n"
         yield f"data: {json.dumps({'type': 'finish'})}\n\n"
