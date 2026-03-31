@@ -338,11 +338,15 @@ def to_json_serializable(obj):
         # Handle common cases
         if isinstance(obj, BaseModel):
             # Use mode='json' to ensure all Pydantic types are properly serialized
-            return (
+            serialized = (
                 obj.model_dump(mode="json")
                 if hasattr(obj, "model_dump")
                 else obj.dict()
             )
+            # Inject the node type so the frontend can identify polymorphic arrays
+            if isinstance(serialized, dict) and "_nodeType" not in serialized:
+                serialized["_nodeType"] = obj.__class__.__name__
+            return serialized
         elif isinstance(obj, (list, tuple)):
             return [to_json_serializable(item) for item in obj]
         elif isinstance(obj, dict):

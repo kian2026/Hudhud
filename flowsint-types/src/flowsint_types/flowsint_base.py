@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 
 class FlowsintType(BaseModel):
@@ -25,5 +25,4 @@ class FlowsintType(BaseModel):
     )
 
     # Allow extra keys to support for additional properties from user
-    class ConfigDict:
-        extra = "allow"
+    model_config = ConfigDict(extra="allow")

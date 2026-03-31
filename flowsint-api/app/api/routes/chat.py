@@ -62,8 +62,10 @@ async def stream_chat(
 
     try:
         provider = service.get_llm_provider(current_user.id)
-    except ValueError as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"LLM provider error: {type(e).__name__}: {e}")
 
     return StreamingResponse(
         service.stream_response(chat_id, llm_messages, provider),

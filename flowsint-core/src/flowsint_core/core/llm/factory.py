@@ -4,11 +4,12 @@ from typing import Optional
 from .protocol import LLMProvider
 
 
-_SUPPORTED_PROVIDERS = ("mistral", "openai")
+_SUPPORTED_PROVIDERS = ("mistral", "openai", "gemini")
 
 _DEFAULT_API_KEY_ENV = {
     "mistral": "MISTRAL_API_KEY",
     "openai": "OPENAI_API_KEY",
+    "gemini": "GEMINI_API_KEY",
 }
 
 
@@ -17,7 +18,7 @@ def create_llm_provider(
     api_key: Optional[str] = None,
     model: Optional[str] = None,
 ) -> LLMProvider:
-    provider = provider or os.environ.get("LLM_PROVIDER", "openai")
+    provider = provider or os.environ.get("LLM_PROVIDER", "gemini")
 
     if provider not in _SUPPORTED_PROVIDERS:
         raise ValueError(
@@ -49,6 +50,11 @@ def create_llm_provider(
         from .providers.openai import OpenAIProvider
 
         return OpenAIProvider(**kwargs)
+
+    if provider == "gemini":
+        from .providers.gemini import GeminiProvider
+
+        return GeminiProvider(**kwargs)
 
     # Unreachable due to the check above, but satisfies type checkers
     raise ValueError(f"Unknown provider: {provider}")

@@ -194,7 +194,7 @@ class ChatService(BaseService):
         return messages
 
     def get_llm_provider(self, owner_id: UUID) -> LLMProvider:
-        provider_name = os.environ.get("LLM_PROVIDER", "openai")
+        provider_name = os.environ.get("LLM_PROVIDER", "gemini")
         vault_key = f"{provider_name.upper()}_API_KEY"
         api_key = self._vault_service.get_secret(owner_id, vault_key)
         return create_llm_provider(provider=provider_name, api_key=api_key)
