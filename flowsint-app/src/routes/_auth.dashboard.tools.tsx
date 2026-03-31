@@ -48,7 +48,7 @@ const toolCategories: ToolCategory = {
       name: 'EmailRep',
       path: '/tools/emailrep',
       description: 'Analyze the reputation of an email address (scam, social, etc.).',
-      active: false,
+      active: true,
       link: 'https://github.com/sublime-security/emailrep.io',
       avatar:
         'https://user-images.githubusercontent.com/11003450/115128085-5805da00-9fa9-11eb-8c7a-dc8b708053ee.png'
@@ -57,19 +57,10 @@ const toolCategories: ToolCategory = {
       name: 'theHarvester',
       path: '/tools/theharvester',
       description: 'Collect emails, domain names, IPs from public sources.',
-      active: false,
+      active: true,
       link: 'https://github.com/laramies/theHarvester'
     },
-    Epios: {
-      name: 'Epios',
-      path: '/tools/epios',
-      description: 'Search engine to find emails, phone numbers, and more.',
-      active: false,
-      link: 'https://epieos.com/',
-      avatar:
-        'https://lh3.googleusercontent.com/p/AF1QipPXBjt3kUBUoN9wOOwWjdbCOaNfDOpUFPcep0IS=w243-h203-n-k-no-nu',
-      apiKeyRequired: 'paid'
-    }
+
   },
   'Domain & Network Analysis': {
     Subfinder: {
@@ -84,7 +75,7 @@ const toolCategories: ToolCategory = {
       name: 'DnsDumpster',
       path: '/tools/dnsdumpster',
       description: 'DNS reconnaissance and network mapping from a domain.',
-      active: false,
+      active: true,
       link: 'https://github.com/PaulSec/API-dnsdumpster.com'
     },
     ASNMap: {
@@ -121,7 +112,7 @@ const toolCategories: ToolCategory = {
       name: 'ExifTool',
       path: '/tools/exiftool',
       description: 'Extract metadata from files (images, documents, etc.).',
-      active: false,
+      active: true,
       link: 'https://github.com/exiftool/exiftool',
       avatar: 'https://avatars.githubusercontent.com/u/8656631?s=200&v=4'
     }
@@ -142,8 +133,19 @@ const toolCategories: ToolCategory = {
       name: 'PhoneInfoga',
       path: '/tools/phoneinfoga',
       description: 'Gather information from phone numbers.',
-      active: false,
+      active: true,
       link: 'https://github.com/sundowndev/phoneinfoga'
+    }
+  },
+  'Security Analysis': {
+    VirusTotal: {
+      name: 'VirusTotal',
+      path: '/tools/virustotal',
+      description: 'Analyze domains, URLs, and file hashes for malware, phishing, and security threats.',
+      active: true,
+      link: 'https://www.virustotal.com/',
+      avatar: 'https://www.virustotal.com/gui/images/favicon.png',
+      apiKeyRequired: 'free'
     }
   }
 }

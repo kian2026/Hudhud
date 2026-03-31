@@ -1,3 +1,4 @@
+import os
 from typing import Any, Dict, List, Optional, Union
 from flowsint_core.core.enricher_base import Enricher
 from flowsint_enrichers.registry import flowsint_enricher
@@ -42,12 +43,13 @@ class IpToPortsEnricher(Enricher):
             {
                 "name": "mode",
                 "type": "select",
-                "description": "Scan mode: active (direct port scanning) or passive (using PDCP database)",
+                "description": "Scan mode: passive (Shodan, stealthy), active (direct scan, exposes your IP), or smart (passive first, fallback to active if no results)",
                 "required": True,
-                "default": "passive",
+                "default": "active",
                 "options": [
-                    {"label": "Passive", "value": "passive"},
-                    {"label": "Active", "value": "active"},
+                    {"label": "Active - Direct Scan (Exposes IP)", "value": "active"},
+                    {"label": "Smart - Passive then Active", "value": "smart"},
+                    {"label": "Passive - Shodan (Stealthy)", "value": "passive"},
                 ],
             },
             {
@@ -111,37 +113,35 @@ class IpToPortsEnricher(Enricher):
         naabu = NaabuTool()
 
         # Get parameters from enricher config
-        mode = self.params.get("mode", "passive")
+        mode = self.params.get("mode", "active")
         port_range = self.params.get("port_range")
         top_ports = self.params.get("top_ports")
         rate = self.params.get("rate")
         timeout = self.params.get("timeout")
         service_detection = self.params.get("service_detection", "false") == "true"
-        api_key = self.get_secret("PDCP_API_KEY", None)
+        api_key = self.get_secret("PDCP_API_KEY", os.getenv("PDCP_API_KEY"))
 
-        # Validate passive mode requirements
-        if mode == "passive" and not api_key:
-            Logger.warn(
-                self.sketch_id,
-                {
-                    "message": "[NAABU] Passive mode requires PDCP_API_KEY. Please configure it in the vault."
-                },
-            )
-            return results
+        # Note: naabu passive mode uses Shodan InternetDB (free, no key needed, stealthy)
+        # Active mode sends packets directly to the target - your IP will be visible in their logs
 
         for ip in data:
             try:
+                # Determine effective scan mode
+                effective_mode = mode
+                if mode == "smart":
+                    effective_mode = "passive"
+
                 Logger.info(
                     self.sketch_id,
                     {
-                        "message": f"[NAABU] Scanning {ip.address} in {mode} mode..."
+                        "message": f"[NAABU] Scanning {ip.address} in {effective_mode} mode..."
                     },
                 )
 
                 # Launch naabu scan
                 scan_results = naabu.launch(
                     target=ip.address,
-                    mode=mode,
+                    mode=effective_mode,
                     port_range=port_range,
                     top_ports=top_ports,
                     rate=rate,
@@ -150,9 +150,27 @@ class IpToPortsEnricher(Enricher):
                     api_key=api_key,
                 )
 
+                # Smart mode: fallback to active if passive returned no results
+                if mode == "smart" and not scan_results:
+                    Logger.warn(
+                        self.sketch_id,
+                        {
+                            "message": f"[NAABU] Passive scan returned no data for {ip.address} (not in Shodan). Falling back to active scan. Note: your IP will be visible to the target."
+                        },
+                    )
+                    scan_results = naabu.launch(
+                        target=ip.address,
+                        mode="active",
+                        port_range=port_range,
+                        top_ports=top_ports,
+                        rate=rate,
+                        timeout=timeout,
+                        service_detection=service_detection,
+                        api_key=api_key,
+                    )
+
                 # Parse results and create Port objects
                 for result in scan_results:
-                    # Naabu JSON output format includes: ip, port, protocol, etc.
                     port_number = result.get("port")
                     if not port_number:
                         continue

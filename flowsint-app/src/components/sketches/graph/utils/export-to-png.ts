@@ -1,12 +1,15 @@
 export const exportToPNG = async (canvaId: string, sketchId: string) => {
-    if (!canvaId) {
-        throw new Error('Graph ref not available')
-    }
-    // Get the canvas element from the ForceGraph2D component
-    const canvas = document.getElementById(canvaId) as HTMLCanvasElement
+    // Find the ForceGraph2D canvas element
+    // The library renders a <canvas> inside a container — we search for it dynamically
+    const canvas =
+        (canvaId && canvaId !== 'null' && document.getElementById(canvaId) as HTMLCanvasElement) ||
+        document.querySelector('.force-graph-container canvas') as HTMLCanvasElement ||
+        document.querySelector('canvas') as HTMLCanvasElement
+
     if (!canvas) {
-        throw new Error('Canvas element not found')
+        throw new Error('Canvas element not found. Make sure the graph is rendered.')
     }
+
     return new Promise<void>((resolve, reject) => {
         canvas.toBlob((blob) => {
             if (!blob) {

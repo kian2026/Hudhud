@@ -18,6 +18,12 @@ class Phone(FlowsintType):
     carrier: Optional[str] = Field(
         None, description="Mobile carrier or service provider", title="Carrier"
     )
+    line_type: Optional[str] = Field(
+        None, description="Type of phone line (mobile, landline, voip, etc.)", title="Line Type"
+    )
+    valid: Optional[bool] = Field(
+        None, description="Whether the number format is valid", title="Valid"
+    )
 
     @model_validator(mode='before')
     @classmethod

@@ -78,6 +78,7 @@ class IpToAsnEnricher(Enricher):
                     asn_number = int(asn_string.replace("AS", "").replace("as", ""))
                     # Create ASN object with correct field mapping
                     asn = ASN(
+                        asn_str=asn_string,
                         number=asn_number,
                         name=asn_data.get("as_name", ""),
                         country=asn_data.get("as_country", ""),

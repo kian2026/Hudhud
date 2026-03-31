@@ -81,6 +81,7 @@ class DomainToAsnEnricher(Enricher):
 
                     # Create ASN object with correct field mapping
                     asn = ASN(
+                        asn_str=asn_string,
                         number=asn_number,
                         name=asn_data.get("as_name", ""),
                         country=asn_data.get("as_country", ""),

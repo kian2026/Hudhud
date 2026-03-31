@@ -69,7 +69,7 @@ export const ToolbarButton = memo(function ToolbarButton({
               'h-7 relative items-center shadow-none',
               !showLabel && 'w-7',
               toggled &&
-                'bg-primary/30 border-primary/40 text-primary hover:bg-primary/40 hover:text-primary'
+              'bg-primary/30 border-primary/40 text-primary hover:bg-primary/40 hover:text-primary'
             )}
           >
             {icon} {showLabel && <span className="hidden md:block">{tooltip}</span>}
@@ -204,7 +204,7 @@ export const Toolbar = memo(function Toolbar({ isLoading }: { isLoading: boolean
       if (!sketchId) return
       try {
         if (format === 'png') {
-          await exportToPNG('null', 'null')
+          await exportToPNG('', sketchId || '')
         } else {
           await sketchService.exportSketch(sketchId, format)
         }
@@ -271,7 +271,7 @@ export const Toolbar = memo(function Toolbar({ isLoading }: { isLoading: boolean
                   className={cn(
                     'h-7 w-7 rounded relative items-center shadow-none',
                     isSelectorModeActive &&
-                      'bg-primary/30 border-primary/40 text-primary hover:bg-primary/40 hover:text-primary'
+                    'bg-primary/30 border-primary/40 text-primary hover:bg-primary/40 hover:text-primary'
                   )}
                 >
                   {selectionMode === 'lasso' ? (
@@ -295,7 +295,7 @@ export const Toolbar = memo(function Toolbar({ isLoading }: { isLoading: boolean
                         className={cn(
                           'h-3! w-5 px-0 rounded relative items-center shadow-none',
                           isSelectorModeActive &&
-                            'bg-primary/30 border-primary/40 text-primary hover:bg-primary/40 hover:text-primary'
+                          'bg-primary/30 border-primary/40 text-primary hover:bg-primary/40 hover:text-primary'
                         )}
                       >
                         <ChevronDown className="h-3 w-3 opacity-50" />
